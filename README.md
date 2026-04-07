@@ -18,6 +18,7 @@ Signal Lantern is a GTK 4 + libadwaita prototype for Linux desktops that watches
   - slow DNS
   - failing DNS
   - high latency and unstable jitter against public DNS targets
+  - sound service down, missing output/input devices, muted output, or muted microphone
   - restart required after updates or driver changes
   - high CPU load
   - low available memory
@@ -28,6 +29,7 @@ Signal Lantern is a GTK 4 + libadwaita prototype for Linux desktops that watches
 - Unique SVG app icon
 - Copy-diagnostics action for advanced troubleshooting
 - First-pass accessibility improvements for screen readers and keyboard users
+- Explicit text summaries for severity and “changed since last check”, so the UI does not rely only on color or icons
 - Simple launch and packaging scripts
 
 ## Project layout
@@ -116,6 +118,14 @@ chmod +x scripts/update-translations.sh scripts/compile-translations.sh
 
 This refreshes `locale/signal-lantern.pot`, merges `po/*.po`, and writes compiled gettext catalogs under `locale/<lang>/LC_MESSAGES/`.
 
+## Autostart after login
+
+The app can enable autostart from its own UI. That creates a desktop entry under:
+
+- `~/.config/autostart/io.github.signallantern.desktop`
+
+So Signal Lantern starts automatically after login on GNOME-compatible desktops.
+
 ## Native package builds
 
 Debian/Ubuntu:
@@ -173,6 +183,8 @@ The current UI now includes a first-pass a11y layer:
 - accessible labels for the summary, issue list, and system detail rows
 - clearer button and expander tooltips for assistive tech
 - fewer noisy focus stops, so keyboard users land on controls instead of decorative containers
+- plain-text severity summaries inside issue cards, so important states are still understandable in high-contrast or low-color situations
+- a visible “changed since last check” summary block in the main status card
 - keyboard shortcuts for the two global actions:
   - `Ctrl+R` runs health checks again
   - `Ctrl+Shift+C` copies diagnostics
@@ -181,6 +193,8 @@ The current UI now includes a first-pass a11y layer:
 This is a pragmatic first pass, not a full accessibility audit.
 
 The UI also now announces material status changes with a lightweight toast instead of forcing noisy focus changes.
+
+It also keeps a small “changed since last check” summary so users can immediately see what got worse, what got better, and what is newly broken.
 
 For network quality, the app now also keeps a short rolling latency sample against stable public targets such as `1.1.1.1` and `8.8.8.8`, so it can warn about both consistently high latency and unstable jitter.
 

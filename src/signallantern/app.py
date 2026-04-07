@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from pathlib import Path
 import subprocess
 import sys
 import traceback
@@ -36,6 +37,7 @@ if gi is not None:
             self.snapshot: Snapshot | None = None
             self.notification_state: dict[str, str] = {}
             self.last_status_signature: tuple[str, tuple[str, ...]] | None = None
+            self.last_change_summary: dict[str, list[str]] = {"new": [], "resolved": []}
 
             check_action = Gio.SimpleAction.new("check-now", None)
             check_action.connect("activate", self.on_check_now)
@@ -44,6 +46,14 @@ if gi is not None:
             copy_action = Gio.SimpleAction.new("copy-diagnostics", None)
             copy_action.connect("activate", self.on_copy_diagnostics)
             self.add_action(copy_action)
+
+            enable_autostart_action = Gio.SimpleAction.new("enable-autostart", None)
+            enable_autostart_action.connect("activate", self.on_enable_autostart)
+            self.add_action(enable_autostart_action)
+
+            disable_autostart_action = Gio.SimpleAction.new("disable-autostart", None)
+            disable_autostart_action.connect("activate", self.on_disable_autostart)
+            self.add_action(disable_autostart_action)
 
             self.set_accels_for_action("app.check-now", ["<Primary>r"])
             self.set_accels_for_action("app.copy-diagnostics", ["<Primary><Shift>c"])
@@ -85,12 +95,40 @@ if gi is not None:
             clipboard.set(json.dumps(payload, indent=2, ensure_ascii=False))
             self.window.show_toast(self._("Diagnostics copied to the clipboard."))
 
+        def on_enable_autostart(self, *_args) -> None:
+            target = self._autostart_path()
+            target.parent.mkdir(parents=True, exist_ok=True)
+            source = Path(__file__).resolve().parents[2] / "data" / "io.github.signallantern.desktop"
+            text = source.read_text(encoding="utf-8")
+            if "X-GNOME-Autostart-enabled" not in text:
+                text += "\nX-GNOME-Autostart-enabled=true\n"
+            target.write_text(text, encoding="utf-8")
+            if self.window:
+                self.window.refresh_autostart_state()
+                self.window.show_toast(self._("Autostart enabled."))
+
+        def on_disable_autostart(self, *_args) -> None:
+            target = self._autostart_path()
+            if target.exists():
+                target.unlink()
+            if self.window:
+                self.window.refresh_autostart_state()
+                self.window.show_toast(self._("Autostart disabled."))
+
+        def _autostart_path(self) -> Path:
+            return Path(GLib.get_user_config_dir()) / "autostart" / "io.github.signallantern.desktop"
+
+        def autostart_enabled(self) -> bool:
+            return self._autostart_path().exists()
+
         def refresh(self) -> None:
+            previous_snapshot = self.snapshot
             snapshot = self.engine.collect()
             self.snapshot = snapshot
+            self.last_change_summary = self._summarize_changes(previous_snapshot, snapshot)
             self._announce_status_change(snapshot)
             if self.window:
-                self.window.update_snapshot(snapshot)
+                self.window.update_snapshot(snapshot, self.last_change_summary)
             self._notify(snapshot)
 
         def _announce_status_change(self, snapshot: Snapshot) -> None:
@@ -104,8 +142,30 @@ if gi is not None:
             if self.last_status_signature == status_signature:
                 return
             if self.window:
-                self.window.show_toast(self._(snapshot.status_line))
+                parts = []
+                if self.last_change_summary["new"]:
+                    parts.append(self._("New issues") + f": {len(self.last_change_summary['new'])}")
+                if self.last_change_summary["resolved"]:
+                    parts.append(self._("Resolved issues") + f": {len(self.last_change_summary['resolved'])}")
+                toast = self._(snapshot.status_line)
+                if parts:
+                    toast += " • " + ", ".join(parts)
+                self.window.show_toast(toast)
             self.last_status_signature = status_signature
+
+        def _summarize_changes(
+            self,
+            previous_snapshot: Snapshot | None,
+            snapshot: Snapshot,
+        ) -> dict[str, list[str]]:
+            if previous_snapshot is None:
+                return {"new": [], "resolved": []}
+            previous = {issue.key: self._(issue.title) for issue in previous_snapshot.issues}
+            current = {issue.key: self._(issue.title) for issue in snapshot.issues}
+            return {
+                "new": [current[key] for key in current.keys() - previous.keys()],
+                "resolved": [previous[key] for key in previous.keys() - current.keys()],
+            }
 
         def _notify(self, snapshot: Snapshot) -> None:
             active_keys = {issue.key for issue in snapshot.issues}
@@ -183,6 +243,18 @@ if gi is not None:
             self.summary_checked.add_css_class("caption")
             summary_box.append(self.summary_checked)
 
+            self.changes_heading = Gtk.Label(xalign=0)
+            self.changes_heading.add_css_class("heading")
+            self.changes_heading.set_text(self._("Changes since last check"))
+            self.changes_heading.set_visible(False)
+            summary_box.append(self.changes_heading)
+
+            self.changes_label = Gtk.Label(xalign=0, wrap=True)
+            self.changes_label.add_css_class("caption")
+            self.changes_label.set_selectable(True)
+            self.changes_label.set_visible(False)
+            summary_box.append(self.changes_label)
+
             issues_frame = Adw.PreferencesGroup(
                 title=self._("Overview"),
                 description=self._("Beginner-friendly issue explanations with advanced details when you want them."),
@@ -229,11 +301,23 @@ if gi is not None:
                     subtitle=self._("Ctrl+R checks again, Ctrl+Shift+C copies diagnostics"),
                 )
             )
+            self.autostart_row = Adw.ActionRow(
+                title=self._("Start automatically after login"),
+                subtitle="",
+            )
+            enable_button = Gtk.Button(label=self._("Enable"))
+            enable_button.connect("clicked", lambda *_: self.app.on_enable_autostart())
+            disable_button = Gtk.Button(label=self._("Disable"))
+            disable_button.connect("clicked", lambda *_: self.app.on_disable_autostart())
+            self.autostart_row.add_suffix(enable_button)
+            self.autostart_row.add_suffix(disable_button)
+            about_group.add(self.autostart_row)
+            self.refresh_autostart_state()
 
         def show_toast(self, message: str) -> None:
             self.toast_overlay.add_toast(Adw.Toast.new(message))
 
-        def update_snapshot(self, snapshot: Snapshot) -> None:
+        def update_snapshot(self, snapshot: Snapshot, changes: dict[str, list[str]]) -> None:
             if not snapshot.issues:
                 summary_text = self._("Everything looks fine")
                 self.summary_title.set_text(summary_text)
@@ -269,6 +353,20 @@ if gi is not None:
                 for issue in snapshot.issues:
                     self.issue_list.append(self._issue_card(issue, snapshot.checked_at))
 
+            change_lines: list[str] = []
+            if changes["new"]:
+                change_lines.append(self._("New issues") + ": " + ", ".join(changes["new"][:4]))
+            if changes["resolved"]:
+                change_lines.append(self._("Resolved issues") + ": " + ", ".join(changes["resolved"][:4]))
+            if change_lines:
+                self.changes_heading.set_visible(True)
+                self.changes_label.set_visible(True)
+                self.changes_label.set_text("\n".join(change_lines))
+            else:
+                self.changes_heading.set_visible(False)
+                self.changes_label.set_visible(False)
+                self.changes_label.set_text("")
+
             for key, row in self.metric_rows.items():
                 value = self._(snapshot.metrics.get(key, "Unknown"))
                 row.set_subtitle(value)
@@ -276,6 +374,10 @@ if gi is not None:
                     [Gtk.AccessibleProperty.LABEL],
                     [f"{self._(key)}: {value}"],
                 )
+
+        def refresh_autostart_state(self) -> None:
+            enabled = self.app.autostart_enabled()
+            self.autostart_row.set_subtitle(self._("Enabled") if enabled else self._("Disabled"))
 
         def _issue_card(self, issue: Issue, checked_at: str) -> Gtk.Widget:
             severity_label = self._severity_label(issue.severity)
@@ -313,6 +415,11 @@ if gi is not None:
             chip.add_css_class(self._severity_css(issue.severity))
             chip.add_css_class("pill")
             title_box.append(chip)
+
+            severity_summary = Gtk.Label(xalign=0)
+            severity_summary.add_css_class("caption")
+            severity_summary.set_text(f"{self._('Severity')}: {severity_label}")
+            box.append(severity_summary)
 
             meaning = Gtk.Label(xalign=0, wrap=True)
             meaning.set_text(self._(issue.meaning))

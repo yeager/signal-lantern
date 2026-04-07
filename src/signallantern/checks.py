@@ -58,6 +58,7 @@ class HealthEngine:
         reboot = self._reboot_state()
         battery = self._battery_state()
         storage = self._storage_state()
+        audio = self._audio_state()
         return {
             "network": network,
             "cpu": cpu,
@@ -67,6 +68,7 @@ class HealthEngine:
             "reboot": reboot,
             "battery": battery,
             "storage": storage,
+            "audio": audio,
         }
 
     def _build_issues(self, raw: dict[str, Any]) -> list[Issue]:
@@ -79,6 +81,7 @@ class HealthEngine:
         reboot = raw["reboot"]
         battery = raw["battery"]
         storage = raw["storage"]
+        audio = raw["audio"]
 
         if not network["connected"]:
             issues.append(
@@ -491,6 +494,131 @@ class HealthEngine:
                 )
             )
 
+        if audio.get("backend_available") and not audio.get("server_running"):
+            issues.append(
+                Issue(
+                    key="audio_server_down",
+                    severity=Severity.WARNING,
+                    title="Sound service is not responding",
+                    meaning="Linux audio services are not responding, so speakers and microphones may stop working until the sound stack comes back.",
+                    suggestions=[
+                        "Log out and back in, or restart the computer if sound disappeared suddenly.",
+                        "If you know how, restart PipeWire or PulseAudio from system settings or a terminal.",
+                        "Check whether another app is holding the sound device in a broken state.",
+                    ],
+                    details={
+                        "backend": audio.get("backend") or "unknown",
+                        "error": audio.get("error") or "no response",
+                    },
+                    source="audio",
+                    notification_body="The Linux sound service is not responding.",
+                )
+            )
+
+        if audio.get("server_running") and not audio.get("has_sinks"):
+            issues.append(
+                Issue(
+                    key="audio_output_missing",
+                    severity=Severity.WARNING,
+                    title="No sound output device found",
+                    meaning="Linux cannot currently find any speaker, headset, or other playback device.",
+                    suggestions=[
+                        "Make sure speakers, headphones, or HDMI audio are connected and powered on.",
+                        "Open sound settings and check whether the output device appears there.",
+                        "If audio hardware vanished after an update, restart the computer and check again.",
+                    ],
+                    details={
+                        "backend": audio.get("backend") or "unknown",
+                        "default_sink": audio.get("default_sink") or "none",
+                    },
+                    source="audio",
+                    notification_body="No sound output device is available.",
+                )
+            )
+
+        if audio.get("server_running") and not audio.get("has_sources"):
+            issues.append(
+                Issue(
+                    key="audio_input_missing",
+                    severity=Severity.WARNING,
+                    title="No microphone found",
+                    meaning="Linux cannot currently find any microphone or other recording device.",
+                    suggestions=[
+                        "Reconnect the microphone, headset, or USB audio device if you use one.",
+                        "Open sound settings and check whether an input device appears there.",
+                        "If the microphone disappeared after docking or undocking, restart audio apps and try again.",
+                    ],
+                    details={
+                        "backend": audio.get("backend") or "unknown",
+                        "default_source": audio.get("default_source") or "none",
+                    },
+                    source="audio",
+                    notification_body="No microphone or recording device is available.",
+                )
+            )
+
+        if audio.get("server_running") and audio.get("output_muted"):
+            issues.append(
+                Issue(
+                    key="audio_output_muted",
+                    severity=Severity.WARNING,
+                    title="Sound output is muted",
+                    meaning="The current playback device is muted, so apps may look fine but still make no sound.",
+                    suggestions=[
+                        "Unmute sound from the system menu or sound settings.",
+                        "Check that the correct output device is selected.",
+                        "Raise the output volume if it is still set extremely low.",
+                    ],
+                    details={
+                        "default_sink": audio.get("default_sink") or "none",
+                        "output_volume_percent": audio.get("output_volume_percent"),
+                    },
+                    source="audio",
+                    notification_body="Sound output is muted.",
+                )
+            )
+        elif audio.get("server_running") and audio.get("output_volume_percent") == 0:
+            issues.append(
+                Issue(
+                    key="audio_output_silent",
+                    severity=Severity.WARNING,
+                    title="Sound volume is set to zero",
+                    meaning="The playback device is active, but the output volume is currently zero.",
+                    suggestions=[
+                        "Raise the volume from the system menu or sound settings.",
+                        "Check the app itself is not muted separately.",
+                        "Verify the correct output device is selected.",
+                    ],
+                    details={
+                        "default_sink": audio.get("default_sink") or "none",
+                        "output_volume_percent": audio.get("output_volume_percent"),
+                    },
+                    source="audio",
+                    notification_body="The active sound output volume is set to zero.",
+                )
+            )
+
+        if audio.get("server_running") and audio.get("input_muted"):
+            issues.append(
+                Issue(
+                    key="audio_input_muted",
+                    severity=Severity.WARNING,
+                    title="Microphone is muted",
+                    meaning="The current recording device is muted, so calls or recordings may not hear you.",
+                    suggestions=[
+                        "Unmute the microphone in the system sound settings.",
+                        "Check whether your headset or keyboard has a hardware mute switch.",
+                        "Test the microphone again after unmuting it.",
+                    ],
+                    details={
+                        "default_source": audio.get("default_source") or "none",
+                        "input_volume_percent": audio.get("input_volume_percent"),
+                    },
+                    source="audio",
+                    notification_body="The microphone is muted.",
+                )
+            )
+
         severity_order = {Severity.CRITICAL: 0, Severity.WARNING: 1, Severity.HEALTHY: 2}
         return sorted(issues, key=lambda issue: severity_order[issue.severity])
 
@@ -510,6 +638,7 @@ class HealthEngine:
         disk = raw["disk"]
         battery = raw["battery"]
         storage = raw["storage"]
+        audio = raw["audio"]
 
         network_value = "Captive portal" if network.get("captive_portal") else ("Online" if network["connected"] else "Offline")
         wifi_value = "N/A"
@@ -544,6 +673,15 @@ class HealthEngine:
             "Memory": f"{memory['available_percent']:.0f}% free",
             "Disk": disk_value,
         }
+        if audio.get("backend_available"):
+            if not audio.get("server_running"):
+                metrics["Audio"] = "Service down"
+            elif not audio.get("has_sinks"):
+                metrics["Audio"] = "No output"
+            elif audio.get("output_muted"):
+                metrics["Audio"] = "Muted"
+            else:
+                metrics["Audio"] = f"{audio.get('output_volume_percent', 0):.0f}%"
         if battery.get("present") and battery.get("percent") is not None:
             suffix = "charging" if battery.get("charging") else "battery"
             metrics["Power"] = f"{battery['percent']:.0f}% {suffix}"
@@ -843,6 +981,62 @@ class HealthEngine:
             "boot_used_percent": boot_used_percent,
         }
 
+    def _audio_state(self) -> dict[str, Any]:
+        backend = None
+        info = ""
+        error = None
+        pactl = shutil.which("pactl")
+        wpctl = shutil.which("wpctl")
+        if pactl:
+            backend = "pactl"
+            info = self._command(["pactl", "info"], timeout=4) or ""
+        elif wpctl:
+            backend = "wpctl"
+            info = self._command(["wpctl", "status"], timeout=4) or ""
+        else:
+            return {
+                "backend_available": False,
+                "backend": None,
+                "server_running": False,
+                "has_sinks": False,
+                "has_sources": False,
+                "default_sink": None,
+                "default_source": None,
+                "output_muted": None,
+                "input_muted": None,
+                "output_volume_percent": None,
+                "input_volume_percent": None,
+                "error": None,
+            }
+
+        server_running = bool(info)
+        if not server_running:
+            error = "audio backend returned no status"
+
+        sinks = self._command(["pactl", "list", "short", "sinks"], timeout=4) if pactl else ""
+        sources = self._command(["pactl", "list", "short", "sources"], timeout=4) if pactl else ""
+        default_sink = self._command(["pactl", "get-default-sink"], timeout=4) if pactl else ""
+        default_source = self._command(["pactl", "get-default-source"], timeout=4) if pactl else ""
+        sink_mute = self._command(["pactl", "get-sink-mute", "@DEFAULT_SINK@"], timeout=4) if pactl else ""
+        source_mute = self._command(["pactl", "get-source-mute", "@DEFAULT_SOURCE@"], timeout=4) if pactl else ""
+        sink_volume = self._command(["pactl", "get-sink-volume", "@DEFAULT_SINK@"], timeout=4) if pactl else ""
+        source_volume = self._command(["pactl", "get-source-volume", "@DEFAULT_SOURCE@"], timeout=4) if pactl else ""
+
+        return {
+            "backend_available": True,
+            "backend": backend,
+            "server_running": server_running,
+            "has_sinks": bool(sinks.strip()) if isinstance(sinks, str) else False,
+            "has_sources": bool(sources.strip()) if isinstance(sources, str) else False,
+            "default_sink": default_sink.strip() or None,
+            "default_source": default_source.strip() or None,
+            "output_muted": sink_mute.strip().endswith("yes") if sink_mute else None,
+            "input_muted": source_mute.strip().endswith("yes") if source_mute else None,
+            "output_volume_percent": self._extract_percent(sink_volume),
+            "input_volume_percent": self._extract_percent(source_volume),
+            "error": error,
+        }
+
     def _system_resolver(self) -> str:
         path = Path("/etc/resolv.conf")
         if not path.exists():
@@ -859,6 +1053,14 @@ class HealthEngine:
             return int(value)
         except ValueError:
             return None
+
+    def _extract_percent(self, text: str | None) -> int | None:
+        if not text:
+            return None
+        match = re.search(r"(\d+)%", text)
+        if not match:
+            return None
+        return self._safe_int(match.group(1))
 
     def _command(self, command: list[str], timeout: int = 3) -> str | None:
         if not shutil.which(command[0]):

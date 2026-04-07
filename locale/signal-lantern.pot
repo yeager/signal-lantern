@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-07 12:01+0200\n"
+"POT-Creation-Date: 2026-04-07 19:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,168 +17,178 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:86
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:96
 msgid "Diagnostics copied to the clipboard."
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:131
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:222
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:108
+msgid "Autostart enabled."
+msgstr ""
+
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:116
+msgid "Autostart disabled."
+msgstr ""
+
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:147
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:358
+msgid "New issues"
+msgstr ""
+
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:149
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:360
+msgid "Resolved issues"
+msgstr ""
+
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:191
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:294
 msgid "Signal Lantern"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:138
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:198
 msgid "Check again now"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:139
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:199
 msgid "Run all health checks immediately"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:164
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:224
 msgid "System health summary"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:164
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:224
 msgid "Current system health and the most important active problems."
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:187
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:248
+msgid "Changes since last check"
+msgstr ""
+
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:259
 msgid "Overview"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:188
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:260
 msgid ""
 "Beginner-friendly issue explanations with advanced details when you want "
 "them."
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:195
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:267
 msgid "Active issues"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:195
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:267
 msgid "Problem cards with plain-language explanations and suggested fixes."
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:204
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:276
 msgid "System details"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:205
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:277
 msgid "Quick health strip for advanced users."
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:213
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:285
 msgid "Unknown"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:218
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:290
 msgid "About"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:223
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:295
 msgid "Explains common network and system problems in plain language"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:228
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:300
 msgid "Keyboard shortcuts"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:229
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:301
 msgid "Ctrl+R checks again, Ctrl+Shift+C copies diagnostics"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:238
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:305
+msgid "Start automatically after login"
+msgstr ""
+
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:308
+msgid "Enable"
+msgstr ""
+
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:310
+msgid "Disable"
+msgstr ""
+
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:322
 msgid "Everything looks fine"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:240
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:324
 msgid ""
 "Signal Lantern will let you know if it spots a network or system problem."
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:243
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:327
 msgid "Critical issue detected"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:243
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:327
 msgid "Needs attention"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:246
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:330
 msgid "Last checked"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:251
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:263
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:335
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:347
 msgid "No active issues"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:264
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:348
 msgid "Your system looks healthy."
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:290
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:323
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:380
+msgid "Enabled"
+msgstr ""
+
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:380
+msgid "Disabled"
+msgstr ""
+
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:392
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:430
 msgid "What you can try"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:343
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:421
+msgid "Severity"
+msgstr ""
+
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:450
 msgid "Copy diagnostics"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:344
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:451
 msgid "Copy full diagnostic report to clipboard"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:349
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:456
 msgid "Show technical details"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:350
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:457
 msgid "Show technical details (press Enter or Space)"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:363
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:470
 msgid "Seen"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:399
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:506
 msgid "No suitable desktop helper was found for this action."
-msgstr ""
-
-msgid "Internet connection looks slow"
-msgstr ""
-
-msgid "Latency to a stable public target is higher than normal, so browsing, calls, or gaming may feel sluggish."
-msgstr ""
-
-msgid "If you are on Wi-Fi, move closer to the router or try Ethernet."
-msgstr ""
-
-msgid "Pause downloads, cloud sync, or streaming on this network."
-msgstr ""
-
-msgid "Run the checks again in a minute to see if the slowdown is temporary."
-msgstr ""
-
-msgid "The internet connection looks slow right now."
-msgstr ""
-
-msgid "Connection stability is uneven"
-msgstr ""
-
-msgid "Latency is jumping around more than usual, which can cause choppy calls, buffering, or lag spikes."
-msgstr ""
-
-msgid "If you are on Wi-Fi, reduce distance and interference if you can."
-msgstr ""
-
-msgid "Pause other network-heavy activity on this connection."
-msgstr ""
-
-msgid "If the problem keeps happening, restart the router or try another network."
-msgstr ""
-
-msgid "The connection is unstable and latency is bouncing around."
 msgstr ""

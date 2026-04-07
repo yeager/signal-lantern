@@ -20,7 +20,9 @@
 ## Accessibility pass (2026-04-07)
 
 - Summary card: accessible label updated dynamically with status and issue count.
+- Summary card: explicit “changes since last check” text block so updates are readable without relying on toast timing or color.
 - Issue cards: accessible label (severity + title) and description (meaning).
+- Issue cards: explicit severity text shown in each card, not just icon + color.
 - Severity icons: tooltip text with severity name for screen readers.
 - Check button: tooltip describing the action.
 - Copy diagnostics button: descriptive tooltip.
@@ -30,6 +32,7 @@
 - Issue list container: accessible label for screen reader context.
 - Keyboard pass: removed focus from summary/issue containers, added app-level shortcuts (`Ctrl+R`, `Ctrl+Shift+C`), and documented the intended keyboard path.
 - Screen-reader pass: summary and issue list now expose clearer accessible descriptions, and material status changes are announced without stealing focus.
+- High-contrast pass: severity and change state now have plain-text labels so the UI remains understandable even when colors/icons are hard to parse.
 
 ## CI pipeline (2026-04-07)
 
@@ -57,6 +60,7 @@
 - Added read-only root filesystem detection.
 - Added `/boot` almost-full detection so update failures are easier to explain.
 - Added rolling public-DNS latency sampling to detect both slow internet response and unstable jitter.
+- Added audio diagnostics for sound-service failure, missing playback/recording devices, muted output, and muted microphone states.
 - All new checks include plain-language guidance aimed at non-technical users.
 
 ## Gettext pipeline (2026-04-07)
@@ -73,9 +77,15 @@
 - Added helper scripts for DEB and RPM builds.
 - Package installs the app entry point, desktop file, icon, and compiled locale files.
 
+## Desktop integration (2026-04-07)
+
+- Added a simple autostart toggle in the app.
+- Added a “changed since last check” summary so users can see what is new or resolved.
+
 ## Remaining gaps
 
 - No tray/background service integration yet.
 - No historical charting or incident log persistence yet.
-- No formal Debian package or Flatpak manifest yet.
+- No Flatpak manifest yet.
+- Native DEB/RPM packaging exists, but it still needs real Linux install testing before calling it production-ready.
 - Network checks are intentionally conservative and may need tuning on real Linux hardware.
