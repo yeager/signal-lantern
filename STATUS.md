@@ -37,6 +37,13 @@
 - Helper script (`scripts/sync-translations.py`) filters PO files by completion percentage.
 - Required secret: `TX_TOKEN` (Transifex API v3 token).
 
+## Secret scanning (2026-04-07)
+
+- Added `.gitleaks.toml` for repo-local scan rules.
+- Added `.github/workflows/secret-scan.yml` to scan pushes, PRs, and manual runs.
+- Added local `.githooks/pre-commit` and `.githooks/pre-push` hooks using gitleaks.
+- Added `scripts/install-git-hooks.sh` to activate repo-local hooks with `core.hooksPath`.
+
 ## Remaining gaps
 
 - No real gettext `.mo` compilation yet, just an i18n-ready bridge plus `po/sv.po`.

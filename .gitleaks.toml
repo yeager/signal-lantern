@@ -1,0 +1,16 @@
+title = "Signal Lantern gitleaks config"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Allow obvious placeholder/example values used in docs and source strings"
+paths = [
+  '''locale/signal-lantern.pot''',
+  '''po/sv.po''',
+  '''translations/sv.po''',
+]
+regexes = [
+  '''example\.com''',
+  '''TX_TOKEN''',
+]

@@ -35,7 +35,9 @@ Signal Lantern is a GTK 4 + libadwaita prototype for Linux desktops that watches
 - `scripts/run.sh` local launch helper
 - `scripts/package.sh` simple source/appdir packaging helper
 - `.github/workflows/transifex-sync.yml` GitHub Actions workflow for source push + translation pull
+- `.github/workflows/secret-scan.yml` GitHub Actions workflow for secret scanning
 - `scripts/sync-translations.py` completion-gated sync helper for pulled PO files
+- `scripts/install-git-hooks.sh` local git hook installer for gitleaks scans
 
 ## Runtime dependencies
 
@@ -127,6 +129,23 @@ The repository includes `.github/workflows/transifex-sync.yml`.
 Required GitHub secret:
 
 - `TX_TOKEN`, a Transifex API v3 token with access to the project
+
+## Secret scanning
+
+This repo now has two layers of secret protection:
+
+- local `pre-commit` and `pre-push` hooks via `gitleaks`
+- GitHub Actions scanning on pushes, pull requests, and manual runs
+
+To enable the local hooks in this clone:
+
+```bash
+cd /Users/bosse/.openclaw/workspace-main/projects/signal-lantern
+chmod +x scripts/install-git-hooks.sh
+./scripts/install-git-hooks.sh
+```
+
+The repo also includes `.gitleaks.toml` for project-local scanning rules.
 
 ## Notes and limits
 
