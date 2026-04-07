@@ -1,5 +1,7 @@
 # Signal Lantern
 
+![Signal Lantern screenshot](assets/signal-lantern-screenshot.png)
+
 Signal Lantern is a GTK 4 + libadwaita prototype for Linux desktops that watches common network and system problems, explains them in plain English, and still exposes useful technical detail when you want it.
 
 ## What the prototype includes
