@@ -41,7 +41,7 @@ jobs:
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install Transifex CLI
         run: |
@@ -49,14 +49,14 @@ jobs:
           sudo mv tx /usr/local/bin/
 
       - name: Push source strings
-        run: tx push --source --no-interactive
+        run: tx push --source
 
   # ── Pull translations ─────────────────────────────────────────────
   pull-translations:
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install Transifex CLI
         run: |
@@ -71,7 +71,7 @@ jobs:
 
       - name: Pull translations above threshold
         run: |
-          tx pull --all --minimum-perc=${{ steps.threshold.outputs.min_completion }} --no-interactive
+          tx pull --all --minimum-perc=${{ steps.threshold.outputs.min_completion }}
 
       - name: Sync PO files to po/ directory
         run: |
