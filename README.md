@@ -197,23 +197,6 @@ Required GitHub secret:
 
 - `TX_TOKEN`, a Transifex API v3 token with access to the project
 
-## Secret scanning
-
-This repo now has two layers of secret protection:
-
-- local `pre-commit` and `pre-push` hooks via `gitleaks`
-- GitHub Actions scanning on pushes, pull requests, and manual runs
-
-To enable the local hooks in this clone:
-
-```bash
-cd /Users/bosse/.openclaw/workspace-main/projects/signal-lantern
-chmod +x scripts/install-git-hooks.sh
-./scripts/install-git-hooks.sh
-```
-
-The repo also includes `.gitleaks.toml` for project-local scanning rules.
-
 ## Notes and limits
 
 - Wi-Fi quality depends on NetworkManager or `nmcli` exposing signal information.
