@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Name=Signal Lantern
+Name[sv]=Signal Lantern
+GenericName=System health helper
+GenericName[sv]=Systemhjälp för hälsa och nätverk
+Comment=Explains common network and system problems in plain language
+Comment[sv]=Förklarar vanliga nätverks- och systemproblem på begriplig svenska
+Exec=signal-lantern
+Icon=io.github.signallantern
+Terminal=false
+Categories=Utility;System;GTK;
+Keywords=network;wifi;memory;disk;cpu;diagnostics;help;
+Keywords[sv]=nätverk;wifi;minne;disk;cpu;diagnostik;hjälp;
+StartupNotify=true
+X-GNOME-UsesNotifications=true

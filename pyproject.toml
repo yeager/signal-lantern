@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "signal-lantern"
+version = "0.1.0"
+description = "GTK desktop helper that explains common Linux network and system problems"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "OpenClaw" }]
+license = { text = "MIT" }
+dependencies = []
+
+[project.scripts]
+signal-lantern = "signallantern.app:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

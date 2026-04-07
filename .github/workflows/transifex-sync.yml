@@ -1,0 +1,105 @@
+# Sync source strings to Transifex and pull translations back.
+#
+# Required GitHub secrets:
+#   TX_TOKEN  – Transifex API token (v3) with read/write access to the project.
+#
+# The workflow runs on two triggers:
+#   1. Push to main that touches the POT file  -> upload source strings.
+#   2. Weekly schedule (Monday 06:00 UTC)       -> pull translations above threshold.
+#
+# Manual dispatch is also supported with a configurable completion threshold.
+
+name: Transifex sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "locale/signal-lantern.pot"
+
+  schedule:
+    # Every Monday at 06:00 UTC
+    - cron: "0 6 * * 1"
+
+  workflow_dispatch:
+    inputs:
+      min_completion:
+        description: "Minimum translation completion percentage (0-100)"
+        required: false
+        default: "20"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  TX_TOKEN: ${{ secrets.TX_TOKEN }}
+
+jobs:
+  # ── Upload source strings ─────────────────────────────────────────
+  push-source:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Transifex CLI
+        run: |
+          curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
+          sudo mv tx /usr/local/bin/
+
+      - name: Push source strings
+        run: tx push --source --no-interactive
+
+  # ── Pull translations ─────────────────────────────────────────────
+  pull-translations:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Transifex CLI
+        run: |
+          curl -o- https://raw.githubusercontent.com/transifex/cli/master/install.sh | bash
+          sudo mv tx /usr/local/bin/
+
+      - name: Set threshold
+        id: threshold
+        run: |
+          THRESHOLD="${{ github.event.inputs.min_completion || '20' }}"
+          echo "min_completion=${THRESHOLD}" >> "$GITHUB_OUTPUT"
+
+      - name: Pull translations above threshold
+        run: |
+          tx pull --all --minimum-perc=${{ steps.threshold.outputs.min_completion }} --no-interactive
+
+      - name: Sync PO files to po/ directory
+        run: |
+          python3 scripts/sync-translations.py \
+            --source-dir translations \
+            --target-dir po \
+            --min-completion ${{ steps.threshold.outputs.min_completion }}
+
+      - name: Check for changes
+        id: diff
+        run: |
+          if git diff --quiet -- translations/ po/; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create pull request
+        if: steps.diff.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "i18n: sync translations from Transifex"
+          branch: transifex/sync-translations
+          title: "i18n: sync translations from Transifex"
+          body: |
+            Automated pull of translations from Transifex.
+
+            Only languages with >= ${{ steps.threshold.outputs.min_completion }}% completion are included.
+
+            Please review the PO files before merging.
+          labels: i18n

@@ -1,0 +1,314 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: signal-lantern 0.1.0\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "2 issues need attention."
+msgstr "2 problem behöver uppmärksamhet."
+
+msgid "About"
+msgstr "Om"
+
+msgid "Active issues"
+msgstr "Aktiva problem"
+
+msgid "Available memory is running low. Apps may freeze or swap heavily."
+msgstr "Tillgängligt minne börjar ta slut. Appar kan frysa eller swappa mycket."
+
+msgid "Beginner-friendly issue explanations with advanced details when you want them."
+msgstr "Nybörjarvänliga förklaringar med tekniska detaljer när du vill ha dem."
+
+msgid "CPU"
+msgstr "CPU"
+
+msgid "Check again now"
+msgstr "Kontrollera igen nu"
+
+msgid "Check that Wi-Fi is turned on."
+msgstr "Kontrollera att Wi‑Fi är aktiverat."
+
+msgid "Check which process is using the CPU in System Monitor."
+msgstr "Kontrollera vilken process som använder CPU i Systemövervakning."
+
+msgid "Close a few heavy apps or inspect System Monitor."
+msgstr "Stäng några tunga appar eller öppna Systemövervakning."
+
+msgid "Close a few large apps to keep the system responsive."
+msgstr "Stäng några stora appar för att hålla systemet responsivt."
+
+msgid "Close apps you do not need."
+msgstr "Stäng appar du inte behöver."
+
+msgid "Close large apps or browser tabs you do not need."
+msgstr "Stäng stora appar eller webbläsarflikar du inte behöver."
+
+msgid "Copy diagnostics"
+msgstr "Kopiera diagnostik"
+
+msgid "Copy full diagnostic report to clipboard"
+msgstr "Kopiera fullständig diagnostikrapport till urklipp"
+
+msgid "Critical"
+msgstr "Kritiskt"
+
+msgid "Critical issue detected"
+msgstr "Kritiskt problem upptäckt"
+
+msgid "Current status"
+msgstr "Nuvarande status"
+
+msgid "DNS"
+msgstr "DNS"
+
+msgid "DNS is failing"
+msgstr "DNS fungerar inte"
+
+msgid "DNS lookups are slow"
+msgstr "DNS-uppslag är långsamma"
+
+msgid "Delete large files you no longer need."
+msgstr "Ta bort stora filer du inte längre behöver."
+
+msgid "Diagnostics copied to the clipboard."
+msgstr "Diagnostik kopierad till urklipp."
+
+msgid "Disk"
+msgstr "Disk"
+
+msgid "Disk space is running low"
+msgstr "Diskutrymmet börjar ta slut"
+
+msgid "Empty the trash."
+msgstr "Töm papperskorgen."
+
+msgid "Everything looks fine"
+msgstr "Allt ser bra ut"
+
+msgid "Explains common network and system problems in plain language"
+msgstr "Förklarar vanliga nätverks- och systemproblem på begriplig svenska"
+
+msgid "Failing"
+msgstr "Fallerar"
+
+msgid "Free some space so updates and downloads do not fail."
+msgstr "Frigör utrymme så att uppdateringar och hämtningar inte misslyckas."
+
+msgid "Gateway"
+msgstr "Gateway"
+
+msgid "Healthy"
+msgstr "Friskt"
+
+msgid "High processor load"
+msgstr "Hög processorbelastning"
+
+msgid "Issue details"
+msgstr "Problemdetaljer"
+
+msgid "Last checked"
+msgstr "Senast kontrollerad"
+
+msgid "Memory"
+msgstr "Minne"
+
+msgid "Move closer to the router or access point."
+msgstr "Flytta dig närmare routern eller accesspunkten."
+
+msgid "Move closer to the router or switch to a stronger connection."
+msgstr "Flytta dig närmare routern eller byt till en starkare anslutning."
+
+msgid "Move files to external or cloud storage."
+msgstr "Flytta filer till extern lagring eller molnlagring."
+
+msgid "N/A"
+msgstr "Ej tillämpligt"
+
+msgid "Name lookups are slow, so websites may feel sluggish."
+msgstr "Namnuppslag är långsamma, så webbplatser kan kännas sega."
+
+msgid "Needs attention"
+msgstr "Behöver uppmärksamhet"
+
+msgid "Network"
+msgstr "Nätverk"
+
+msgid "No active issues"
+msgstr "Inga aktiva problem"
+
+msgid "No network connection"
+msgstr "Ingen nätverksanslutning"
+
+msgid "No suitable desktop helper was found for this action."
+msgstr "Ingen passande skrivbordshjälpare hittades för den här åtgärden."
+
+msgid "OK"
+msgstr "OK"
+
+msgid "Offline"
+msgstr "Offline"
+
+msgid "Online"
+msgstr "Online"
+
+msgid "Open Disk Usage Analyzer"
+msgstr "Öppna diskanalys"
+
+msgid "Open Network Settings"
+msgstr "Öppna nätverksinställningar"
+
+msgid "Open System Monitor"
+msgstr "Öppna systemövervakning"
+
+msgid "Open network settings and reconnect to get back online."
+msgstr "Öppna nätverksinställningarna och anslut igen för att komma online."
+
+msgid "Overview"
+msgstr "Översikt"
+
+msgid "Plug in the network cable if you use wired internet."
+msgstr "Anslut nätverkskabeln om du använder kabelanslutning."
+
+msgid "Quick health strip for advanced users."
+msgstr "Snabb hälsoremsa för avancerade användare."
+
+msgid "Re-run checks"
+msgstr "Kör kontroller igen"
+
+msgid "Reachable"
+msgstr "Nåbar"
+
+msgid "Reboot if memory pressure stays high."
+msgstr "Starta om datorn om minnespressen består."
+
+msgid "Reconnect or troubleshoot the local network hardware."
+msgstr "Anslut igen eller felsök den lokala nätverksutrustningen."
+
+msgid "Reconnect to your network connection."
+msgstr "Anslut till nätverket igen."
+
+msgid "Reconnect to your wireless network."
+msgstr "Anslut till ditt trådlösa nätverk igen."
+
+msgid "Reduce obstacles between your device and the router."
+msgstr "Minska hinder mellan enheten och routern."
+
+msgid "Restart heavy apps that may be leaking memory."
+msgstr "Starta om tunga appar som kan läcka minne."
+
+msgid "Restart the network connection or router."
+msgstr "Starta om nätverksanslutningen eller routern."
+
+msgid "Restart the router if you can."
+msgstr "Starta om routern om du kan."
+
+msgid "Restart the system if the load does not drop."
+msgstr "Starta om systemet om belastningen inte går ned."
+
+msgid "Router is not responding"
+msgstr "Routern svarar inte"
+
+msgid "Run all health checks immediately"
+msgstr "Kör alla hälsokontroller direkt"
+
+msgid "Seen"
+msgstr "Sedd"
+
+msgid "Show technical details"
+msgstr "Visa tekniska detaljer"
+
+msgid "Signal Lantern"
+msgstr "Signal Lantern"
+
+msgid "Signal Lantern will let you know if it spots a network or system problem."
+msgstr "Signal Lantern säger till om den hittar ett nätverks- eller systemproblem."
+
+msgid "Switch DNS server in network settings if you know a better one."
+msgstr "Byt DNS-server i nätverksinställningarna om du vet en bättre."
+
+msgid "System details"
+msgstr "Systemdetaljer"
+
+msgid "System health helper"
+msgstr "Systemhjälp för hälsa och nätverk"
+
+msgid "System health summary"
+msgstr "Systemhälsans sammanfattning"
+
+msgid "System is low on memory"
+msgstr "Systemet har lite minne kvar"
+
+msgid "Technical details"
+msgstr "Tekniska detaljer"
+
+msgid "The DNS server does not appear to be answering reliably."
+msgstr "DNS-servern verkar inte svara pålitligt."
+
+msgid "The DNS server is answering, but lookups are slower than normal."
+msgstr "DNS-servern svarar, men uppslagen är långsammare än normalt."
+
+msgid "Try another device on the same network to compare."
+msgstr "Prova en annan enhet på samma nätverk för att jämföra."
+
+msgid "Try another network if websites still do not load."
+msgstr "Prova ett annat nätverk om webbplatser fortfarande inte laddar."
+
+msgid "Unknown"
+msgstr "Okänt"
+
+msgid "Unreachable"
+msgstr "Onåbar"
+
+msgid "Use Ethernet for a more stable connection if possible."
+msgstr "Använd Ethernet för stabilare anslutning om det går."
+
+msgid "Wait a minute and try again in case the problem is temporary."
+msgstr "Vänta en minut och försök igen om problemet är tillfälligt."
+
+msgid "Warning"
+msgstr "Varning"
+
+msgid "Weak"
+msgstr "Svag"
+
+msgid "Weak Wi-Fi signal"
+msgstr "Svag Wi‑Fi-signal"
+
+msgid "Websites may fail to load until name resolution works again."
+msgstr "Webbplatser kan sluta ladda tills namnuppslag fungerar igen."
+
+msgid "What this means"
+msgstr "Det här betyder"
+
+msgid "What you can try"
+msgstr "Det här kan du prova"
+
+msgid "Wi-Fi"
+msgstr "Wi‑Fi"
+
+msgid "Your computer does not seem to be connected to Wi-Fi or wired Ethernet right now."
+msgstr "Datorn verkar inte vara ansluten till Wi‑Fi eller kabelnätverk just nu."
+
+msgid "Your computer is connected to the local network, but the default gateway is not replying."
+msgstr "Datorn är ansluten till det lokala nätverket, men standard-gatewayen svarar inte."
+
+msgid "Your main disk is almost full. Downloads, updates, and apps may start failing."
+msgstr "Huvuddisken är nästan full. Hämtningar, uppdateringar och appar kan börja fallera."
+
+msgid "Your system has been under heavy CPU load for a while. Apps may feel slow or unresponsive."
+msgstr "Systemet har haft hög CPU-belastning en stund. Appar kan kännas långsamma eller sega."
+
+msgid "Your system looks healthy."
+msgstr "Ditt system verkar må bra."
+
+msgid "Your wireless connection is active, but the signal is weak and may cause slow speeds or dropouts."
+msgstr "Den trådlösa anslutningen är aktiv, men signalen är svag och kan ge låg hastighet eller avbrott."
+
+msgid "issue"
+msgstr "problem"
+
+msgid "issues"
+msgstr "problem"
+
