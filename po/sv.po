@@ -414,3 +414,54 @@ msgstr "problem"
 msgid "issues"
 msgstr "problem"
 
+
+msgid "Power"
+msgstr "Ström"
+
+msgid "Battery is running low"
+msgstr "Batteriet börjar ta slut"
+
+msgid "Your computer is on battery power and may shut down soon if you do not plug it in."
+msgstr "Datorn kör på batteri och kan snart stängas av om du inte ansluter laddaren."
+
+msgid "Plug in the charger as soon as you can."
+msgstr "Anslut laddaren så snart du kan."
+
+msgid "Save your work in case the battery runs out."
+msgstr "Spara ditt arbete om batteriet tar slut."
+
+msgid "Lower screen brightness or close heavy apps to stretch the battery a bit longer."
+msgstr "Sänk skärmens ljusstyrka eller stäng tunga appar för att få batteriet att räcka lite längre."
+
+msgid "System disk is read-only"
+msgstr "Systemdisken är skrivskyddad"
+
+msgid "Linux mounted the main filesystem as read-only, so saving files, updates, or app changes may fail."
+msgstr "Linux har monterat huvudfilsystemet som skrivskyddat, så sparande, uppdateringar eller appändringar kan misslyckas."
+
+msgid "Save any work you still can to another location."
+msgstr "Spara det arbete du kan till en annan plats."
+
+msgid "Restart the computer and check whether the disk becomes writable again."
+msgstr "Starta om datorn och kontrollera om disken blir skrivbar igen."
+
+msgid "If the problem returns, check the disk for errors or ask for technical help."
+msgstr "Om problemet kommer tillbaka, kontrollera disken efter fel eller be om teknisk hjälp."
+
+msgid "Boot partition is almost full"
+msgstr "Bootpartitionen är nästan full"
+
+msgid "The small boot partition is nearly full, so kernel or system updates may fail."
+msgstr "Den lilla bootpartitionen är nästan full, så kärn- eller systemuppdateringar kan misslyckas."
+
+msgid "Install any pending updates fully, then restart the computer."
+msgstr "Installera alla väntande uppdateringar helt och starta sedan om datorn."
+
+msgid "Remove old kernels or packages only if you know how, or ask for help."
+msgstr "Ta bara bort gamla kärnor eller paket om du vet hur, annars be om hjälp."
+
+msgid "If updates keep failing, check disk usage in /boot specifically."
+msgstr "Om uppdateringar fortsätter att misslyckas, kontrollera särskilt diskutrymmet i /boot."
+
+msgid "Read-only"
+msgstr "Skrivskyddad"

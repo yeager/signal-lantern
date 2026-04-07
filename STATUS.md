@@ -3,7 +3,7 @@
 ## Built in this pass
 
 - GTK 4 + libadwaita Python application shell
-- Health engine with live probes for network, Wi-Fi, gateway, DNS, CPU, memory, and disk
+- Health engine with live probes for network, Wi-Fi, gateway, DNS, CPU, memory, disk, reboot state, power, and storage edge cases
 - Issue cards with beginner guidance and expandable technical details
 - Desktop notifications with duplicate suppression by issue state
 - English-first strings with Swedish translations included
@@ -53,11 +53,20 @@
 - Added detection for Wi-Fi hardware blocked states.
 - Added a conservative warning for likely missing Wi-Fi adapter / driver situations.
 - Added reboot-required detection using standard Linux reboot markers.
+- Added low-battery detection for laptops running on battery power.
+- Added read-only root filesystem detection.
+- Added `/boot` almost-full detection so update failures are easier to explain.
 - All new checks include plain-language guidance aimed at non-technical users.
+
+## Gettext pipeline (2026-04-07)
+
+- Replaced the temporary runtime translation map with a gettext-based loader.
+- Added `scripts/update-translations.sh` to extract source strings and merge `po/*.po`.
+- Added `scripts/compile-translations.sh` to build `.mo` catalogs from `po/*.po`.
+- Updated run/package scripts to compile and bundle locale files when gettext tools are available.
 
 ## Remaining gaps
 
-- No real gettext `.mo` compilation yet, just an i18n-ready bridge plus `po/sv.po`.
 - No tray/background service integration yet.
 - No historical charting or incident log persistence yet.
 - No formal Debian package or Flatpak manifest yet.

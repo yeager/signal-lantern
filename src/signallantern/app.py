@@ -206,7 +206,7 @@ if gi is not None:
             )
             right.append(self.metrics_group)
             self.metric_rows: dict[str, Adw.ActionRow] = {}
-            for key in ["Network", "Wi-Fi", "Gateway", "DNS", "CPU", "Memory", "Disk"]:
+            for key in ["Network", "Wi-Fi", "Gateway", "DNS", "CPU", "Memory", "Disk", "Power"]:
                 row = Adw.ActionRow(title=self._(key))
                 row.update_property(
                     [Gtk.AccessibleProperty.LABEL],

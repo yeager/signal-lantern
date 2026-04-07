@@ -1,158 +1,49 @@
 from __future__ import annotations
 
+import gettext
 import locale
+import os
+import sys
 from dataclasses import dataclass
+from pathlib import Path
 
-_TRANSLATIONS = {
-    "sv": {
-        "Signal Lantern": "Signal Lantern",
-        "System health helper": "Systemhjälp för hälsa och nätverk",
-        "Explains common network and system problems in plain language": "Förklarar vanliga nätverks- och systemproblem på begriplig svenska",
-        "Overview": "Översikt",
-        "System details": "Systemdetaljer",
-        "About": "Om",
-        "Check again now": "Kontrollera igen nu",
-        "Run all health checks immediately": "Kör alla hälsokontroller direkt",
-        "Keyboard shortcuts": "Tangentbordsgenvägar",
-        "Ctrl+R checks again, Ctrl+Shift+C copies diagnostics": "Ctrl+R kör kontroller igen, Ctrl+Skift+C kopierar diagnostik",
-        "Everything looks fine": "Allt ser bra ut",
-        "Your system looks healthy.": "Ditt system verkar må bra.",
-        "Needs attention": "Behöver uppmärksamhet",
-        "Critical issue detected": "Kritiskt problem upptäckt",
-        "What this means": "Det här betyder",
-        "What you can try": "Det här kan du prova",
-        "Technical details": "Tekniska detaljer",
-        "Show technical details": "Visa tekniska detaljer",
-        "Show technical details (press Enter or Space)": "Visa tekniska detaljer (tryck Enter eller blanksteg)",
-        "Last checked": "Senast kontrollerad",
-        "System health summary": "Systemhälsans sammanfattning",
-        "Current system health and the most important active problems.": "Nuvarande systemhälsa och de viktigaste aktiva problemen.",
-        "Active issues": "Aktiva problem",
-        "Problem cards with plain-language explanations and suggested fixes.": "Problemkort med enkla förklaringar och föreslagna lösningar.",
-        "No active issues": "Inga aktiva problem",
-        "Signal Lantern will let you know if it spots a network or system problem.": "Signal Lantern säger till om den hittar ett nätverks- eller systemproblem.",
-        "Healthy": "Friskt",
-        "Warning": "Varning",
-        "Critical": "Kritiskt",
-        "No network connection": "Ingen nätverksanslutning",
-        "Sign-in required on this network": "Inloggning krävs på det här nätverket",
-        "This network likely wants you to open a browser and sign in before the internet works normally.": "Det här nätverket vill troligen att du öppnar en webbläsare och loggar in innan internet fungerar normalt.",
-        "Open a web browser and wait a moment for a sign-in page.": "Öppna en webbläsare och vänta en stund på en inloggningssida.",
-        "If nothing appears, try visiting a simple website that starts with http://.": "Om inget visas, prova att besöka en enkel webbplats som börjar med http://.",
-        "After signing in, run the checks again.": "Kör kontrollerna igen efter att du loggat in.",
-        "Wi-Fi is turned off": "Wi‑Fi är avstängt",
-        "Your computer has Wi-Fi hardware, but wireless networking is currently switched off.": "Datorn har Wi‑Fi-hårdvara, men trådlöst nätverk är avstängt just nu.",
-        "Turn Wi-Fi on from the system menu or network settings.": "Slå på Wi‑Fi från systemmenyn eller nätverksinställningarna.",
-        "If airplane mode is enabled, turn it off.": "Om flygplansläge är aktiverat, stäng av det.",
-        "Run the checks again after reconnecting.": "Kör kontrollerna igen efter återanslutning.",
-        "Wi-Fi hardware is blocked": "Wi‑Fi-hårdvaran är blockerad",
-        "Linux can see the Wi-Fi adapter, but the hardware itself looks switched off or blocked.": "Linux kan se Wi‑Fi-adaptern, men själva hårdvaran verkar vara avstängd eller blockerad.",
-        "Check for a laptop Wi-Fi switch or airplane-mode key.": "Leta efter en Wi‑Fi-knapp eller flygplanslägesknapp på datorn.",
-        "Turn off airplane mode in the system menu.": "Stäng av flygplansläge i systemmenyn.",
-        "Restart once if the hardware switch state looks wrong.": "Starta om en gång om hårdvarublockeringen verkar fel.",
-        "Wi-Fi adapter may be missing": "Wi‑Fi-adaptern kan saknas",
-        "Linux does not currently see a working Wi-Fi adapter, so wireless networking may need a driver or a reconnected adapter.": "Linux ser inte någon fungerande Wi‑Fi-adapter just nu, så trådlöst nätverk kan behöva en drivrutin eller att adaptern ansluts igen.",
-        "If you use a USB Wi-Fi adapter, unplug it and plug it in again.": "Om du använder en USB-baserad Wi‑Fi-adapter, koppla ur och anslut den igen.",
-        "Open Additional Drivers and check whether Linux offers a Wi-Fi driver.": "Öppna Ytterligare drivrutiner och se om Linux erbjuder en Wi‑Fi-drivrutin.",
-        "If this is a laptop, restart once and see if Wi-Fi returns.": "Om det här är en bärbar dator, starta om en gång och se om Wi‑Fi kommer tillbaka.",
-        "A restart is required": "En omstart krävs",
-        "Linux has pending updates or driver changes that will not fully apply until you restart the computer.": "Linux har väntande uppdateringar eller drivrutinsändringar som inte börjar gälla fullt ut förrän du startar om datorn.",
-        "Save your work and restart the computer when convenient.": "Spara ditt arbete och starta om datorn när det passar.",
-        "After restarting, run the checks again.": "Kör kontrollerna igen efter omstart.",
-        "If a device still does not work, check updates or Additional Drivers.": "Om en enhet fortfarande inte fungerar, kontrollera uppdateringar eller Ytterligare drivrutiner.",
-        "Weak Wi-Fi signal": "Svag Wi‑Fi-signal",
-        "Router is not responding": "Routern svarar inte",
-        "DNS lookups are slow": "DNS-uppslag är långsamma",
-        "DNS is failing": "DNS fungerar inte",
-        "High processor load": "Hög processorbelastning",
-        "System is low on memory": "Systemet har lite minne kvar",
-        "Disk space is running low": "Diskutrymmet börjar ta slut",
-        "Your computer does not seem to be connected to Wi-Fi or wired Ethernet right now.": "Datorn verkar inte vara ansluten till Wi‑Fi eller kabelnätverk just nu.",
-        "Your wireless connection is active, but the signal is weak and may cause slow speeds or dropouts.": "Den trådlösa anslutningen är aktiv, men signalen är svag och kan ge låg hastighet eller avbrott.",
-        "Your computer is connected to the local network, but the default gateway is not replying.": "Datorn är ansluten till det lokala nätverket, men standard-gatewayen svarar inte.",
-        "The DNS server is answering, but lookups are slower than normal.": "DNS-servern svarar, men uppslagen är långsammare än normalt.",
-        "The DNS server does not appear to be answering reliably.": "DNS-servern verkar inte svara pålitligt.",
-        "Your system has been under heavy CPU load for a while. Apps may feel slow or unresponsive.": "Systemet har haft hög CPU-belastning en stund. Appar kan kännas långsamma eller sega.",
-        "Available memory is running low. Apps may freeze or swap heavily.": "Tillgängligt minne börjar ta slut. Appar kan frysa eller swappa mycket.",
-        "Your main disk is almost full. Downloads, updates, and apps may start failing.": "Huvuddisken är nästan full. Hämtningar, uppdateringar och appar kan börja fallera.",
-        "Check that Wi-Fi is turned on.": "Kontrollera att Wi‑Fi är aktiverat.",
-        "Reconnect to your wireless network.": "Anslut till ditt trådlösa nätverk igen.",
-        "Plug in the network cable if you use wired internet.": "Anslut nätverkskabeln om du använder kabelanslutning.",
-        "Move closer to the router or access point.": "Flytta dig närmare routern eller accesspunkten.",
-        "Reduce obstacles between your device and the router.": "Minska hinder mellan enheten och routern.",
-        "Use Ethernet for a more stable connection if possible.": "Använd Ethernet för stabilare anslutning om det går.",
-        "Restart the router if you can.": "Starta om routern om du kan.",
-        "Reconnect to your network connection.": "Anslut till nätverket igen.",
-        "Try another device on the same network to compare.": "Prova en annan enhet på samma nätverk för att jämföra.",
-        "Wait a minute and try again in case the problem is temporary.": "Vänta en minut och försök igen om problemet är tillfälligt.",
-        "Switch DNS server in network settings if you know a better one.": "Byt DNS-server i nätverksinställningarna om du vet en bättre.",
-        "Restart the network connection or router.": "Starta om nätverksanslutningen eller routern.",
-        "Try another network if websites still do not load.": "Prova ett annat nätverk om webbplatser fortfarande inte laddar.",
-        "Close apps you do not need.": "Stäng appar du inte behöver.",
-        "Check which process is using the CPU in System Monitor.": "Kontrollera vilken process som använder CPU i Systemövervakning.",
-        "Restart the system if the load does not drop.": "Starta om systemet om belastningen inte går ned.",
-        "Close large apps or browser tabs you do not need.": "Stäng stora appar eller webbläsarflikar du inte behöver.",
-        "Restart heavy apps that may be leaking memory.": "Starta om tunga appar som kan läcka minne.",
-        "Reboot if memory pressure stays high.": "Starta om datorn om minnespressen består.",
-        "Delete large files you no longer need.": "Ta bort stora filer du inte längre behöver.",
-        "Empty the trash.": "Töm papperskorgen.",
-        "Move files to external or cloud storage.": "Flytta filer till extern lagring eller molnlagring.",
-        "Open Network Settings": "Öppna nätverksinställningar",
-        "Open System Monitor": "Öppna systemövervakning",
-        "Open Disk Usage Analyzer": "Öppna diskanalys",
-        "Copy diagnostics": "Kopiera diagnostik",
-        "Copy full diagnostic report to clipboard": "Kopiera fullständig diagnostikrapport till urklipp",
-        "Re-run checks": "Kör kontroller igen",
-        "Issue details": "Problemdetaljer",
-        "Current status": "Nuvarande status",
-        "Seen": "Sedd",
-        "Unknown": "Okänt",
-        "Diagnostics copied to the clipboard.": "Diagnostik kopierad till urklipp.",
-        "Beginner-friendly issue explanations with advanced details when you want them.": "Nybörjarvänliga förklaringar med tekniska detaljer när du vill ha dem.",
-        "Quick health strip for advanced users.": "Snabb hälsoremsa för avancerade användare.",
-        "No suitable desktop helper was found for this action.": "Ingen passande skrivbordshjälpare hittades för den här åtgärden.",
-        "Open network settings and reconnect to get back online.": "Öppna nätverksinställningarna och anslut igen för att komma online.",
-        "Move closer to the router or switch to a stronger connection.": "Flytta dig närmare routern eller byt till en starkare anslutning.",
-        "Reconnect or troubleshoot the local network hardware.": "Anslut igen eller felsök den lokala nätverksutrustningen.",
-        "Name lookups are slow, so websites may feel sluggish.": "Namnuppslag är långsamma, så webbplatser kan kännas sega.",
-        "Websites may fail to load until name resolution works again.": "Webbplatser kan sluta ladda tills namnuppslag fungerar igen.",
-        "Close a few heavy apps or inspect System Monitor.": "Stäng några tunga appar eller öppna Systemövervakning.",
-        "Close a few large apps to keep the system responsive.": "Stäng några stora appar för att hålla systemet responsivt.",
-        "Free some space so updates and downloads do not fail.": "Frigör utrymme så att uppdateringar och hämtningar inte misslyckas.",
-        "Online": "Online",
-        "Offline": "Offline",
-        "Captive portal": "Inloggningsportal",
-        "Network": "Nätverk",
-        "Wi-Fi": "Wi‑Fi",
-        "Gateway": "Gateway",
-        "DNS": "DNS",
-        "CPU": "CPU",
-        "Memory": "Minne",
-        "Disk": "Disk",
-        "Reachable": "Nåbar",
-        "Unreachable": "Onåbar",
-        "Failing": "Fallerar",
-        "N/A": "Ej tillämpligt",
-        "OK": "OK",
-        "Weak": "Svag",
-        "Off": "Av",
-        "Hardware blocked": "Hårdvarublockerad",
-        "Adapter missing": "Adapter saknas",
-        "issue": "problem",
-        "issues": "problem",
-        "2 issues need attention.": "2 problem behöver uppmärksamhet.",
-    }
-}
+DOMAIN = "signal-lantern"
+
+
+def _project_root() -> Path:
+    return Path(__file__).resolve().parents[2]
+
+
+def _locale_search_paths() -> list[Path]:
+    paths: list[Path] = []
+    env_dir = os.environ.get("SIGNAL_LANTERN_LOCALE_DIR")
+    if env_dir:
+        paths.append(Path(env_dir))
+    root = _project_root()
+    paths.extend(
+        [
+            root / "locale",
+            root / "share" / "locale",
+            Path(sys.prefix) / "share" / "locale",
+        ]
+    )
+    seen: set[str] = set()
+    unique: list[Path] = []
+    for path in paths:
+        key = str(path)
+        if key not in seen:
+            seen.add(key)
+            unique.append(path)
+    return unique
 
 
 @dataclass
 class I18n:
     language: str
+    translator: gettext.NullTranslations
 
     def gettext(self, text: str) -> str:
-        lang = self.language.split("_")[0].split("-")[0]
-        return _TRANSLATIONS.get(lang, {}).get(text, text)
-
+        return self.translator.gettext(text)
 
 
 def detect_language() -> str:
@@ -160,6 +51,13 @@ def detect_language() -> str:
     return lang or "en"
 
 
-
 def get_i18n(language: str | None = None) -> I18n:
-    return I18n(language or detect_language())
+    chosen = language or detect_language()
+    for localedir in _locale_search_paths():
+        try:
+            translator = gettext.translation(DOMAIN, localedir=str(localedir), languages=[chosen], fallback=False)
+            return I18n(chosen, translator)
+        except FileNotFoundError:
+            continue
+    return I18n(chosen, gettext.NullTranslations())
+

@@ -51,6 +51,8 @@ class HealthEngine:
         disk = self._disk_state()
         dns = self._dns_state()
         reboot = self._reboot_state()
+        battery = self._battery_state()
+        storage = self._storage_state()
         return {
             "network": network,
             "cpu": cpu,
@@ -58,6 +60,8 @@ class HealthEngine:
             "disk": disk,
             "dns": dns,
             "reboot": reboot,
+            "battery": battery,
+            "storage": storage,
         }
 
     def _build_issues(self, raw: dict[str, Any]) -> list[Issue]:
@@ -68,6 +72,8 @@ class HealthEngine:
         memory = raw["memory"]
         disk = raw["disk"]
         reboot = raw["reboot"]
+        battery = raw["battery"]
+        storage = raw["storage"]
 
         if not network["connected"]:
             issues.append(
@@ -368,6 +374,70 @@ class HealthEngine:
                 )
             )
 
+        if battery.get("present") and battery.get("percent") is not None and battery.get("charging") is False and battery["percent"] <= 15:
+            issues.append(
+                Issue(
+                    key="battery_low",
+                    severity=Severity.CRITICAL if battery["percent"] <= 8 else Severity.WARNING,
+                    title="Battery is running low",
+                    meaning="Your computer is on battery power and may shut down soon if you do not plug it in.",
+                    suggestions=[
+                        "Plug in the charger as soon as you can.",
+                        "Save your work in case the battery runs out.",
+                        "Lower screen brightness or close heavy apps to stretch the battery a bit longer.",
+                    ],
+                    details={
+                        "battery_percent": battery.get("percent"),
+                        "charging": battery.get("charging"),
+                        "status": battery.get("status") or "unknown",
+                    },
+                    source="power",
+                    notification_body="Plug in the charger soon to avoid an unexpected shutdown.",
+                )
+            )
+
+        if storage.get("root_read_only"):
+            issues.append(
+                Issue(
+                    key="root_read_only",
+                    severity=Severity.CRITICAL,
+                    title="System disk is read-only",
+                    meaning="Linux mounted the main filesystem as read-only, so saving files, updates, or app changes may fail.",
+                    suggestions=[
+                        "Save any work you still can to another location.",
+                        "Restart the computer and check whether the disk becomes writable again.",
+                        "If the problem returns, check the disk for errors or ask for technical help.",
+                    ],
+                    details={
+                        "mount": storage.get("root_mount") or "/",
+                        "mode": "read-only",
+                    },
+                    source="storage",
+                    notification_body="The main filesystem is read-only and may block saving or updates.",
+                )
+            )
+
+        if storage.get("boot_used_percent") is not None and storage["boot_used_percent"] >= 90:
+            issues.append(
+                Issue(
+                    key="boot_partition_low",
+                    severity=Severity.WARNING,
+                    title="Boot partition is almost full",
+                    meaning="The small boot partition is nearly full, so kernel or system updates may fail.",
+                    suggestions=[
+                        "Install any pending updates fully, then restart the computer.",
+                        "Remove old kernels or packages only if you know how, or ask for help.",
+                        "If updates keep failing, check disk usage in /boot specifically.",
+                    ],
+                    details={
+                        "mount": storage.get("boot_mount") or "/boot",
+                        "used_percent": storage.get("boot_used_percent"),
+                    },
+                    source="storage",
+                    notification_body="The boot partition is nearly full and updates may fail.",
+                )
+            )
+
         severity_order = {Severity.CRITICAL: 0, Severity.WARNING: 1, Severity.HEALTHY: 2}
         return sorted(issues, key=lambda issue: severity_order[issue.severity])
 
@@ -385,6 +455,8 @@ class HealthEngine:
         cpu = raw["cpu"]
         memory = raw["memory"]
         disk = raw["disk"]
+        battery = raw["battery"]
+        storage = raw["storage"]
 
         network_value = "Captive portal" if network.get("captive_portal") else ("Online" if network["connected"] else "Offline")
         wifi_value = "N/A"
@@ -399,15 +471,26 @@ class HealthEngine:
             wifi_value = f"{label} ({network.get('wifi_signal_percent', '?')}%)"
         gateway_value = "Reachable" if network.get("gateway_reachable") else ("Unreachable" if network.get("gateway") else "Unknown")
         dns_value = f"{int(dns['latency_ms'])} ms" if dns.get("latency_ms") is not None else ("Failing" if dns.get("success") is False else "Unknown")
-        return {
+        if storage.get("root_read_only"):
+            disk_value = "Read-only"
+        elif storage.get("boot_used_percent") is not None and storage["boot_used_percent"] >= 90:
+            disk_value = f"/boot {storage['boot_used_percent']:.0f}% used"
+        else:
+            disk_value = f"{disk['used_percent']:.0f}% used"
+
+        metrics = {
             "Network": network_value,
             "Wi-Fi": wifi_value,
             "Gateway": gateway_value,
             "DNS": dns_value,
             "CPU": f"{cpu['usage_percent']:.0f}%",
             "Memory": f"{memory['available_percent']:.0f}% free",
-            "Disk": f"{disk['used_percent']:.0f}% used",
+            "Disk": disk_value,
         }
+        if battery.get("present") and battery.get("percent") is not None:
+            suffix = "charging" if battery.get("charging") else "battery"
+            metrics["Power"] = f"{battery['percent']:.0f}% {suffix}"
+        return metrics
 
     def _network_state(self) -> dict[str, Any]:
         route_output = self._command(["ip", "route", "show", "default"])
@@ -622,6 +705,47 @@ class HealthEngine:
             "used_percent": used_percent,
             "free_gib": usage.free / (1024 ** 3),
             "total_gib": usage.total / (1024 ** 3),
+        }
+
+    def _battery_state(self) -> dict[str, Any]:
+        power_dir = Path("/sys/class/power_supply")
+        if not power_dir.exists():
+            return {"present": False, "percent": None, "charging": None, "status": None}
+        for candidate in sorted(power_dir.iterdir()):
+            if not candidate.name.startswith("BAT"):
+                continue
+            status = self._read_text(candidate / "status")
+            percent_raw = self._read_text(candidate / "capacity")
+            percent = self._safe_int(percent_raw)
+            charging = None
+            if status:
+                normalized = status.lower()
+                charging = normalized in {"charging", "full"}
+            return {"present": True, "percent": percent, "charging": charging, "status": status}
+        return {"present": False, "percent": None, "charging": None, "status": None}
+
+    def _storage_state(self) -> dict[str, Any]:
+        root_read_only = False
+        mounts = Path("/proc/mounts")
+        if mounts.exists():
+            for line in mounts.read_text(encoding="utf-8").splitlines():
+                parts = line.split()
+                if len(parts) >= 4 and parts[1] == "/":
+                    root_read_only = "ro" in parts[3].split(",")
+                    break
+        boot_mount = "/boot" if Path("/boot").exists() else None
+        boot_used_percent = None
+        if boot_mount:
+            try:
+                boot_usage = shutil.disk_usage(boot_mount)
+                boot_used_percent = (boot_usage.used / boot_usage.total) * 100 if boot_usage.total else 0.0
+            except OSError:
+                boot_used_percent = None
+        return {
+            "root_mount": "/",
+            "root_read_only": root_read_only,
+            "boot_mount": boot_mount,
+            "boot_used_percent": boot_used_percent,
         }
 
     def _system_resolver(self) -> str:

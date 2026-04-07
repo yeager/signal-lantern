@@ -414,3 +414,54 @@ msgstr ""
 msgid "issues"
 msgstr ""
 
+
+msgid "Power"
+msgstr ""
+
+msgid "Battery is running low"
+msgstr ""
+
+msgid "Your computer is on battery power and may shut down soon if you do not plug it in."
+msgstr ""
+
+msgid "Plug in the charger as soon as you can."
+msgstr ""
+
+msgid "Save your work in case the battery runs out."
+msgstr ""
+
+msgid "Lower screen brightness or close heavy apps to stretch the battery a bit longer."
+msgstr ""
+
+msgid "System disk is read-only"
+msgstr ""
+
+msgid "Linux mounted the main filesystem as read-only, so saving files, updates, or app changes may fail."
+msgstr ""
+
+msgid "Save any work you still can to another location."
+msgstr ""
+
+msgid "Restart the computer and check whether the disk becomes writable again."
+msgstr ""
+
+msgid "If the problem returns, check the disk for errors or ask for technical help."
+msgstr ""
+
+msgid "Boot partition is almost full"
+msgstr ""
+
+msgid "The small boot partition is nearly full, so kernel or system updates may fail."
+msgstr ""
+
+msgid "Install any pending updates fully, then restart the computer."
+msgstr ""
+
+msgid "Remove old kernels or packages only if you know how, or ask for help."
+msgstr ""
+
+msgid "If updates keep failing, check disk usage in /boot specifically."
+msgstr ""
+
+msgid "Read-only"
+msgstr ""

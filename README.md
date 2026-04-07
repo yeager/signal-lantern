@@ -32,15 +32,17 @@ Signal Lantern is a GTK 4 + libadwaita prototype for Linux desktops that watches
 - `src/signallantern/app.py` GTK application and UI
 - `src/signallantern/checks.py` health engine and Linux probes
 - `src/signallantern/models.py` issue/snapshot data model
-- `src/signallantern/i18n.py` lightweight runtime translation layer
+- `src/signallantern/i18n.py` gettext-based translation loader
 - `data/io.github.signallantern.desktop` desktop launcher
 - `data/io.github.signallantern.svg` app icon
-- `po/sv.po` Swedish gettext-style catalog starter
+- `po/sv.po` Swedish gettext catalog
 - `scripts/run.sh` local launch helper
 - `scripts/package.sh` simple source/appdir packaging helper
 - `.github/workflows/transifex-sync.yml` GitHub Actions workflow for source push + translation pull
 - `.github/workflows/secret-scan.yml` GitHub Actions workflow for secret scanning
 - `scripts/sync-translations.py` completion-gated sync helper for pulled PO files
+- `scripts/update-translations.sh` extract source strings and merge updated `.po` files
+- `scripts/compile-translations.sh` compile `.po` files into gettext `.mo` catalogs
 - `scripts/install-git-hooks.sh` local git hook installer for gitleaks scans
 
 ## Runtime dependencies
@@ -100,6 +102,16 @@ gtk-update-icon-cache ~/.local/share/icons/hicolor 2>/dev/null || true
 ```
 
 If you do not install the console script, adjust `Exec=` in the desktop file to point at `scripts/run.sh`.
+
+## Update and compile translations
+
+```bash
+chmod +x scripts/update-translations.sh scripts/compile-translations.sh
+./scripts/update-translations.sh
+./scripts/compile-translations.sh
+```
+
+This refreshes `locale/signal-lantern.pot`, merges `po/*.po`, and writes compiled gettext catalogs under `locale/<lang>/LC_MESSAGES/`.
 
 ## Simple packaging helper
 
@@ -161,5 +173,5 @@ The repo also includes `.gitleaks.toml` for project-local scanning rules.
 - Wi-Fi quality depends on NetworkManager or `nmcli` exposing signal information.
 - DNS timing currently uses a real lookup of `example.com` via the system resolver.
 - Gateway reachability uses `ping`, so environments that block ICMP may report false positives.
-- The app is i18n-ready in structure, but the runtime still uses an in-app translation map instead of compiled gettext catalogs.
+- The app now loads compiled gettext catalogs when they are available, and falls back to source strings when they are not.
 - Tray support is intentionally skipped in this first prototype because modern GTK 4 desktops do not offer a consistent cross-desktop tray API.
