@@ -44,6 +44,9 @@ if gi is not None:
             copy_action.connect("activate", self.on_copy_diagnostics)
             self.add_action(copy_action)
 
+            self.set_accels_for_action("app.check-now", ["<Primary>r"])
+            self.set_accels_for_action("app.copy-diagnostics", ["<Primary><Shift>c"])
+
         def do_activate(self) -> None:
             if self.window is None:
                 self.window = SignalLanternWindow(self)
@@ -118,6 +121,8 @@ if gi is not None:
             header = Adw.HeaderBar()
             check_button = Gtk.Button(label=self._("Check again now"))
             check_button.set_tooltip_text(self._("Run all health checks immediately"))
+            check_button.set_can_focus(True)
+            check_button.set_receives_default(True)
             check_button.connect("clicked", lambda *_: self.app.refresh())
             header.pack_end(check_button)
 
@@ -138,7 +143,6 @@ if gi is not None:
 
             self.summary_card = Adw.Bin()
             self.summary_card.add_css_class("card")
-            self.summary_card.set_focusable(True)
             self.summary_card.update_property(
                 [Gtk.AccessibleProperty.LABEL],
                 [self._("System health summary")],
@@ -203,6 +207,12 @@ if gi is not None:
                     subtitle=self._("Explains common network and system problems in plain language"),
                 )
             )
+            about_group.add(
+                Adw.ActionRow(
+                    title=self._("Keyboard shortcuts"),
+                    subtitle=self._("Ctrl+R checks again, Ctrl+Shift+C copies diagnostics"),
+                )
+            )
 
         def show_toast(self, message: str) -> None:
             self.toast_overlay.add_toast(Adw.Toast.new(message))
@@ -257,7 +267,6 @@ if gi is not None:
 
             card = Adw.Bin()
             card.add_css_class("card")
-            card.set_focusable(True)
             card.update_property(
                 [Gtk.AccessibleProperty.LABEL, Gtk.AccessibleProperty.DESCRIPTION],
                 [
@@ -311,23 +320,25 @@ if gi is not None:
                 action_label = self._(self._action_label(issue.action))
                 primary = Gtk.Button(label=action_label)
                 primary.set_tooltip_text(action_label)
+                primary.set_can_focus(True)
                 primary.connect("clicked", self._launch_action, issue.action)
                 actions.append(primary)
 
             copy_button = Gtk.Button(label=self._("Copy diagnostics"))
             copy_button.set_tooltip_text(self._("Copy full diagnostic report to clipboard"))
+            copy_button.set_can_focus(True)
             copy_button.connect("clicked", lambda *_: self.app.on_copy_diagnostics())
             actions.append(copy_button)
 
             expander = Gtk.Expander(label=self._("Show technical details"))
-            expander.set_tooltip_text(self._("Show technical details"))
+            expander.set_tooltip_text(self._("Show technical details (press Enter or Space)"))
+            expander.set_can_focus(True)
             box.append(expander)
             details_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=4)
             expander.set_child(details_box)
             for key, value in issue.details.items():
                 detail = Gtk.Label(xalign=0, wrap=True)
                 detail.set_selectable(True)
-                detail.set_focusable(True)
                 detail.set_text(f"{key}: {value}")
                 details_box.append(detail)
 

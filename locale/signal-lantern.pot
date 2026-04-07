@@ -57,6 +57,9 @@ msgstr ""
 msgid "Critical issue detected"
 msgstr ""
 
+msgid "Ctrl+R checks again, Ctrl+Shift+C copies diagnostics"
+msgstr ""
+
 msgid "Current status"
 msgstr ""
 
@@ -106,6 +109,9 @@ msgid "High processor load"
 msgstr ""
 
 msgid "Issue details"
+msgstr ""
+
+msgid "Keyboard shortcuts"
 msgstr ""
 
 msgid "Last checked"
@@ -217,6 +223,9 @@ msgid "Seen"
 msgstr ""
 
 msgid "Show technical details"
+msgstr ""
+
+msgid "Show technical details (press Enter or Space)"
 msgstr ""
 
 msgid "Signal Lantern"

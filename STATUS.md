@@ -19,15 +19,16 @@
 
 ## Accessibility pass (2026-04-07)
 
-- Summary card: focusable, accessible label updated dynamically with status and issue count.
-- Issue cards: focusable, accessible label (severity + title) and description (meaning).
+- Summary card: accessible label updated dynamically with status and issue count.
+- Issue cards: accessible label (severity + title) and description (meaning).
 - Severity icons: tooltip text with severity name for screen readers.
 - Check button: tooltip describing the action.
 - Copy diagnostics button: descriptive tooltip.
 - Technical details expander: tooltip for discoverability.
-- Detail labels inside expanders: focusable + selectable for keyboard users.
+- Detail labels inside expanders: selectable for keyboard users without becoming separate focus stops.
 - System detail rows (ActionRow): accessible label includes both metric name and current value, updated on each refresh.
 - Issue list container: accessible label for screen reader context.
+- Keyboard pass: removed focus from summary/issue containers, added app-level shortcuts (`Ctrl+R`, `Ctrl+Shift+C`), and documented the intended keyboard path.
 
 ## CI pipeline (2026-04-07)
 

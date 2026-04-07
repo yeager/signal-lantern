@@ -110,10 +110,13 @@ This creates `dist/signal-lantern-appdir.tar.gz`, a lightweight appdir-style bun
 
 The current UI now includes a first-pass a11y layer:
 
-- focusable summary and issue cards
 - accessible labels for the summary, issue list, and system detail rows
 - clearer button and expander tooltips for assistive tech
-- selectable technical detail rows for keyboard users
+- fewer noisy focus stops, so keyboard users land on controls instead of decorative containers
+- keyboard shortcuts for the two global actions:
+  - `Ctrl+R` runs health checks again
+  - `Ctrl+Shift+C` copies diagnostics
+- selectable technical detail rows for copy/paste without turning every detail row into a separate focus stop
 
 This is a pragmatic first pass, not a full accessibility audit.
 

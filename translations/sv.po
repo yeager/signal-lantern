@@ -57,6 +57,9 @@ msgstr "Kritiskt"
 msgid "Critical issue detected"
 msgstr "Kritiskt problem upptäckt"
 
+msgid "Ctrl+R checks again, Ctrl+Shift+C copies diagnostics"
+msgstr "Ctrl+R kör kontroller igen, Ctrl+Skift+C kopierar diagnostik"
+
 msgid "Current status"
 msgstr "Nuvarande status"
 
@@ -107,6 +110,9 @@ msgstr "Hög processorbelastning"
 
 msgid "Issue details"
 msgstr "Problemdetaljer"
+
+msgid "Keyboard shortcuts"
+msgstr "Tangentbordsgenvägar"
 
 msgid "Last checked"
 msgstr "Senast kontrollerad"
@@ -218,6 +224,9 @@ msgstr "Sedd"
 
 msgid "Show technical details"
 msgstr "Visa tekniska detaljer"
+
+msgid "Show technical details (press Enter or Space)"
+msgstr "Visa tekniska detaljer (tryck Enter eller blanksteg)"
 
 msgid "Signal Lantern"
 msgstr "Signal Lantern"
