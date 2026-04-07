@@ -29,6 +29,7 @@
 - System detail rows (ActionRow): accessible label includes both metric name and current value, updated on each refresh.
 - Issue list container: accessible label for screen reader context.
 - Keyboard pass: removed focus from summary/issue containers, added app-level shortcuts (`Ctrl+R`, `Ctrl+Shift+C`), and documented the intended keyboard path.
+- Screen-reader pass: summary and issue list now expose clearer accessible descriptions, and material status changes are announced without stealing focus.
 
 ## CI pipeline (2026-04-07)
 
@@ -44,6 +45,15 @@
 - Added `.github/workflows/secret-scan.yml` to scan pushes, PRs, and manual runs.
 - Added local `.githooks/pre-commit` and `.githooks/pre-push` hooks using gitleaks.
 - Added `scripts/install-git-hooks.sh` to activate repo-local hooks with `core.hooksPath`.
+
+## Diagnostics expansion (2026-04-07)
+
+- Added captive portal detection for sign-in-required networks.
+- Added detection for Wi-Fi turned off in software.
+- Added detection for Wi-Fi hardware blocked states.
+- Added a conservative warning for likely missing Wi-Fi adapter / driver situations.
+- Added reboot-required detection using standard Linux reboot markers.
+- All new checks include plain-language guidance aimed at non-technical users.
 
 ## Remaining gaps
 

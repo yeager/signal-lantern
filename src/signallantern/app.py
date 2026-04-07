@@ -35,6 +35,7 @@ if gi is not None:
             self.window: SignalLanternWindow | None = None
             self.snapshot: Snapshot | None = None
             self.notification_state: dict[str, str] = {}
+            self.last_status_signature: tuple[str, tuple[str, ...]] | None = None
 
             check_action = Gio.SimpleAction.new("check-now", None)
             check_action.connect("activate", self.on_check_now)
@@ -87,9 +88,24 @@ if gi is not None:
         def refresh(self) -> None:
             snapshot = self.engine.collect()
             self.snapshot = snapshot
+            self._announce_status_change(snapshot)
             if self.window:
                 self.window.update_snapshot(snapshot)
             self._notify(snapshot)
+
+        def _announce_status_change(self, snapshot: Snapshot) -> None:
+            status_signature = (
+                snapshot.status_line,
+                tuple(issue.key for issue in snapshot.issues),
+            )
+            if self.last_status_signature is None:
+                self.last_status_signature = status_signature
+                return
+            if self.last_status_signature == status_signature:
+                return
+            if self.window:
+                self.window.show_toast(self._(snapshot.status_line))
+            self.last_status_signature = status_signature
 
         def _notify(self, snapshot: Snapshot) -> None:
             active_keys = {issue.key for issue in snapshot.issues}
@@ -144,8 +160,8 @@ if gi is not None:
             self.summary_card = Adw.Bin()
             self.summary_card.add_css_class("card")
             self.summary_card.update_property(
-                [Gtk.AccessibleProperty.LABEL],
-                [self._("System health summary")],
+                [Gtk.AccessibleProperty.LABEL, Gtk.AccessibleProperty.DESCRIPTION],
+                [self._("System health summary"), self._("Current system health and the most important active problems.")],
             )
             left.append(self.summary_card)
             summary_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
@@ -175,8 +191,8 @@ if gi is not None:
 
             self.issue_list = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12)
             self.issue_list.update_property(
-                [Gtk.AccessibleProperty.LABEL],
-                [self._("Active issues")],
+                [Gtk.AccessibleProperty.LABEL, Gtk.AccessibleProperty.DESCRIPTION],
+                [self._("Active issues"), self._("Problem cards with plain-language explanations and suggested fixes.")],
             )
             issues_frame.add(self.issue_list)
 
@@ -234,8 +250,8 @@ if gi is not None:
             n_issues = len(snapshot.issues)
             issue_count = f"{n_issues} {'issue' if n_issues == 1 else 'issues'}" if n_issues else self._("No active issues")
             self.summary_card.update_property(
-                [Gtk.AccessibleProperty.LABEL],
-                [f"{summary_text}. {issue_count}. {checked_text}"],
+                [Gtk.AccessibleProperty.LABEL, Gtk.AccessibleProperty.DESCRIPTION],
+                [f"{summary_text}. {issue_count}. {checked_text}", self._(snapshot.status_line)],
             )
 
             while child := self.issue_list.get_first_child():
@@ -271,7 +287,7 @@ if gi is not None:
                 [Gtk.AccessibleProperty.LABEL, Gtk.AccessibleProperty.DESCRIPTION],
                 [
                     f"{severity_label}: {translated_title}",
-                    self._(issue.meaning),
+                    f"{self._(issue.meaning)} {self._('What you can try')}: {' '.join(self._(suggestion) for suggestion in issue.suggestions[:2])}",
                 ],
             )
             box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=10)

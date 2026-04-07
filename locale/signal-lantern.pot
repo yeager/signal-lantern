@@ -9,10 +9,22 @@ msgstr ""
 msgid "2 issues need attention."
 msgstr ""
 
+msgid "A restart is required"
+msgstr ""
+
 msgid "About"
 msgstr ""
 
 msgid "Active issues"
+msgstr ""
+
+msgid "Adapter missing"
+msgstr ""
+
+msgid "After restarting, run the checks again."
+msgstr ""
+
+msgid "After signing in, run the checks again."
 msgstr ""
 
 msgid "Available memory is running low. Apps may freeze or swap heavily."
@@ -24,7 +36,13 @@ msgstr ""
 msgid "CPU"
 msgstr ""
 
+msgid "Captive portal"
+msgstr ""
+
 msgid "Check again now"
+msgstr ""
+
+msgid "Check for a laptop Wi-Fi switch or airplane-mode key."
 msgstr ""
 
 msgid "Check that Wi-Fi is turned on."
@@ -61,6 +79,9 @@ msgid "Ctrl+R checks again, Ctrl+Shift+C copies diagnostics"
 msgstr ""
 
 msgid "Current status"
+msgstr ""
+
+msgid "Current system health and the most important active problems."
 msgstr ""
 
 msgid "DNS"
@@ -102,10 +123,28 @@ msgstr ""
 msgid "Gateway"
 msgstr ""
 
+msgid "Hardware blocked"
+msgstr ""
+
 msgid "Healthy"
 msgstr ""
 
 msgid "High processor load"
+msgstr ""
+
+msgid "If a device still does not work, check updates or Additional Drivers."
+msgstr ""
+
+msgid "If airplane mode is enabled, turn it off."
+msgstr ""
+
+msgid "If nothing appears, try visiting a simple website that starts with http://."
+msgstr ""
+
+msgid "If this is a laptop, restart once and see if Wi-Fi returns."
+msgstr ""
+
+msgid "If you use a USB Wi-Fi adapter, unplug it and plug it in again."
 msgstr ""
 
 msgid "Issue details"
@@ -115,6 +154,15 @@ msgid "Keyboard shortcuts"
 msgstr ""
 
 msgid "Last checked"
+msgstr ""
+
+msgid "Linux can see the Wi-Fi adapter, but the hardware itself looks switched off or blocked."
+msgstr ""
+
+msgid "Linux does not currently see a working Wi-Fi adapter, so wireless networking may need a driver or a reconnected adapter."
+msgstr ""
+
+msgid "Linux has pending updates or driver changes that will not fully apply until you restart the computer."
 msgstr ""
 
 msgid "Memory"
@@ -153,10 +201,16 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
+msgid "Off"
+msgstr ""
+
 msgid "Offline"
 msgstr ""
 
 msgid "Online"
+msgstr ""
+
+msgid "Open Additional Drivers and check whether Linux offers a Wi-Fi driver."
 msgstr ""
 
 msgid "Open Disk Usage Analyzer"
@@ -168,6 +222,9 @@ msgstr ""
 msgid "Open System Monitor"
 msgstr ""
 
+msgid "Open a web browser and wait a moment for a sign-in page."
+msgstr ""
+
 msgid "Open network settings and reconnect to get back online."
 msgstr ""
 
@@ -175,6 +232,9 @@ msgid "Overview"
 msgstr ""
 
 msgid "Plug in the network cable if you use wired internet."
+msgstr ""
+
+msgid "Problem cards with plain-language explanations and suggested fixes."
 msgstr ""
 
 msgid "Quick health strip for advanced users."
@@ -204,6 +264,9 @@ msgstr ""
 msgid "Restart heavy apps that may be leaking memory."
 msgstr ""
 
+msgid "Restart once if the hardware switch state looks wrong."
+msgstr ""
+
 msgid "Restart the network connection or router."
 msgstr ""
 
@@ -219,6 +282,12 @@ msgstr ""
 msgid "Run all health checks immediately"
 msgstr ""
 
+msgid "Run the checks again after reconnecting."
+msgstr ""
+
+msgid "Save your work and restart the computer when convenient."
+msgstr ""
+
 msgid "Seen"
 msgstr ""
 
@@ -226,6 +295,9 @@ msgid "Show technical details"
 msgstr ""
 
 msgid "Show technical details (press Enter or Space)"
+msgstr ""
+
+msgid "Sign-in required on this network"
 msgstr ""
 
 msgid "Signal Lantern"
@@ -258,10 +330,19 @@ msgstr ""
 msgid "The DNS server is answering, but lookups are slower than normal."
 msgstr ""
 
+msgid "This network likely wants you to open a browser and sign in before the internet works normally."
+msgstr ""
+
 msgid "Try another device on the same network to compare."
 msgstr ""
 
 msgid "Try another network if websites still do not load."
+msgstr ""
+
+msgid "Turn Wi-Fi on from the system menu or network settings."
+msgstr ""
+
+msgid "Turn off airplane mode in the system menu."
 msgstr ""
 
 msgid "Unknown"
@@ -297,7 +378,19 @@ msgstr ""
 msgid "Wi-Fi"
 msgstr ""
 
+msgid "Wi-Fi adapter may be missing"
+msgstr ""
+
+msgid "Wi-Fi hardware is blocked"
+msgstr ""
+
+msgid "Wi-Fi is turned off"
+msgstr ""
+
 msgid "Your computer does not seem to be connected to Wi-Fi or wired Ethernet right now."
+msgstr ""
+
+msgid "Your computer has Wi-Fi hardware, but wireless networking is currently switched off."
 msgstr ""
 
 msgid "Your computer is connected to the local network, but the default gateway is not replying."

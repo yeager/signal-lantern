@@ -9,11 +9,23 @@ msgstr ""
 msgid "2 issues need attention."
 msgstr "2 problem behöver uppmärksamhet."
 
+msgid "A restart is required"
+msgstr "En omstart krävs"
+
 msgid "About"
 msgstr "Om"
 
 msgid "Active issues"
 msgstr "Aktiva problem"
+
+msgid "Adapter missing"
+msgstr "Adapter saknas"
+
+msgid "After restarting, run the checks again."
+msgstr "Kör kontrollerna igen efter omstart."
+
+msgid "After signing in, run the checks again."
+msgstr "Kör kontrollerna igen efter att du loggat in."
 
 msgid "Available memory is running low. Apps may freeze or swap heavily."
 msgstr "Tillgängligt minne börjar ta slut. Appar kan frysa eller swappa mycket."
@@ -24,8 +36,14 @@ msgstr "Nybörjarvänliga förklaringar med tekniska detaljer när du vill ha de
 msgid "CPU"
 msgstr "CPU"
 
+msgid "Captive portal"
+msgstr "Inloggningsportal"
+
 msgid "Check again now"
 msgstr "Kontrollera igen nu"
+
+msgid "Check for a laptop Wi-Fi switch or airplane-mode key."
+msgstr "Leta efter en Wi‑Fi-knapp eller flygplanslägesknapp på datorn."
 
 msgid "Check that Wi-Fi is turned on."
 msgstr "Kontrollera att Wi‑Fi är aktiverat."
@@ -62,6 +80,9 @@ msgstr "Ctrl+R kör kontroller igen, Ctrl+Skift+C kopierar diagnostik"
 
 msgid "Current status"
 msgstr "Nuvarande status"
+
+msgid "Current system health and the most important active problems."
+msgstr "Nuvarande systemhälsa och de viktigaste aktiva problemen."
 
 msgid "DNS"
 msgstr "DNS"
@@ -102,11 +123,29 @@ msgstr "Frigör utrymme så att uppdateringar och hämtningar inte misslyckas."
 msgid "Gateway"
 msgstr "Gateway"
 
+msgid "Hardware blocked"
+msgstr "Hårdvarublockerad"
+
 msgid "Healthy"
 msgstr "Friskt"
 
 msgid "High processor load"
 msgstr "Hög processorbelastning"
+
+msgid "If a device still does not work, check updates or Additional Drivers."
+msgstr "Om en enhet fortfarande inte fungerar, kontrollera uppdateringar eller Ytterligare drivrutiner."
+
+msgid "If airplane mode is enabled, turn it off."
+msgstr "Om flygplansläge är aktiverat, stäng av det."
+
+msgid "If nothing appears, try visiting a simple website that starts with http://."
+msgstr "Om inget visas, prova att besöka en enkel webbplats som börjar med http://."
+
+msgid "If this is a laptop, restart once and see if Wi-Fi returns."
+msgstr "Om det här är en bärbar dator, starta om en gång och se om Wi‑Fi kommer tillbaka."
+
+msgid "If you use a USB Wi-Fi adapter, unplug it and plug it in again."
+msgstr "Om du använder en USB-baserad Wi‑Fi-adapter, koppla ur och anslut den igen."
 
 msgid "Issue details"
 msgstr "Problemdetaljer"
@@ -116,6 +155,15 @@ msgstr "Tangentbordsgenvägar"
 
 msgid "Last checked"
 msgstr "Senast kontrollerad"
+
+msgid "Linux can see the Wi-Fi adapter, but the hardware itself looks switched off or blocked."
+msgstr "Linux kan se Wi‑Fi-adaptern, men själva hårdvaran verkar vara avstängd eller blockerad."
+
+msgid "Linux does not currently see a working Wi-Fi adapter, so wireless networking may need a driver or a reconnected adapter."
+msgstr "Linux ser inte någon fungerande Wi‑Fi-adapter just nu, så trådlöst nätverk kan behöva en drivrutin eller att adaptern ansluts igen."
+
+msgid "Linux has pending updates or driver changes that will not fully apply until you restart the computer."
+msgstr "Linux har väntande uppdateringar eller drivrutinsändringar som inte börjar gälla fullt ut förrän du startar om datorn."
 
 msgid "Memory"
 msgstr "Minne"
@@ -153,11 +201,17 @@ msgstr "Ingen passande skrivbordshjälpare hittades för den här åtgärden."
 msgid "OK"
 msgstr "OK"
 
+msgid "Off"
+msgstr "Av"
+
 msgid "Offline"
 msgstr "Offline"
 
 msgid "Online"
 msgstr "Online"
+
+msgid "Open Additional Drivers and check whether Linux offers a Wi-Fi driver."
+msgstr "Öppna Ytterligare drivrutiner och se om Linux erbjuder en Wi‑Fi-drivrutin."
 
 msgid "Open Disk Usage Analyzer"
 msgstr "Öppna diskanalys"
@@ -168,6 +222,9 @@ msgstr "Öppna nätverksinställningar"
 msgid "Open System Monitor"
 msgstr "Öppna systemövervakning"
 
+msgid "Open a web browser and wait a moment for a sign-in page."
+msgstr "Öppna en webbläsare och vänta en stund på en inloggningssida."
+
 msgid "Open network settings and reconnect to get back online."
 msgstr "Öppna nätverksinställningarna och anslut igen för att komma online."
 
@@ -176,6 +233,9 @@ msgstr "Översikt"
 
 msgid "Plug in the network cable if you use wired internet."
 msgstr "Anslut nätverkskabeln om du använder kabelanslutning."
+
+msgid "Problem cards with plain-language explanations and suggested fixes."
+msgstr "Problemkort med enkla förklaringar och föreslagna lösningar."
 
 msgid "Quick health strip for advanced users."
 msgstr "Snabb hälsoremsa för avancerade användare."
@@ -204,6 +264,9 @@ msgstr "Minska hinder mellan enheten och routern."
 msgid "Restart heavy apps that may be leaking memory."
 msgstr "Starta om tunga appar som kan läcka minne."
 
+msgid "Restart once if the hardware switch state looks wrong."
+msgstr "Starta om en gång om hårdvarublockeringen verkar fel."
+
 msgid "Restart the network connection or router."
 msgstr "Starta om nätverksanslutningen eller routern."
 
@@ -219,6 +282,12 @@ msgstr "Routern svarar inte"
 msgid "Run all health checks immediately"
 msgstr "Kör alla hälsokontroller direkt"
 
+msgid "Run the checks again after reconnecting."
+msgstr "Kör kontrollerna igen efter återanslutning."
+
+msgid "Save your work and restart the computer when convenient."
+msgstr "Spara ditt arbete och starta om datorn när det passar."
+
 msgid "Seen"
 msgstr "Sedd"
 
@@ -227,6 +296,9 @@ msgstr "Visa tekniska detaljer"
 
 msgid "Show technical details (press Enter or Space)"
 msgstr "Visa tekniska detaljer (tryck Enter eller blanksteg)"
+
+msgid "Sign-in required on this network"
+msgstr "Inloggning krävs på det här nätverket"
 
 msgid "Signal Lantern"
 msgstr "Signal Lantern"
@@ -258,11 +330,20 @@ msgstr "DNS-servern verkar inte svara pålitligt."
 msgid "The DNS server is answering, but lookups are slower than normal."
 msgstr "DNS-servern svarar, men uppslagen är långsammare än normalt."
 
+msgid "This network likely wants you to open a browser and sign in before the internet works normally."
+msgstr "Det här nätverket vill troligen att du öppnar en webbläsare och loggar in innan internet fungerar normalt."
+
 msgid "Try another device on the same network to compare."
 msgstr "Prova en annan enhet på samma nätverk för att jämföra."
 
 msgid "Try another network if websites still do not load."
 msgstr "Prova ett annat nätverk om webbplatser fortfarande inte laddar."
+
+msgid "Turn Wi-Fi on from the system menu or network settings."
+msgstr "Slå på Wi‑Fi från systemmenyn eller nätverksinställningarna."
+
+msgid "Turn off airplane mode in the system menu."
+msgstr "Stäng av flygplansläge i systemmenyn."
 
 msgid "Unknown"
 msgstr "Okänt"
@@ -297,8 +378,20 @@ msgstr "Det här kan du prova"
 msgid "Wi-Fi"
 msgstr "Wi‑Fi"
 
+msgid "Wi-Fi adapter may be missing"
+msgstr "Wi‑Fi-adaptern kan saknas"
+
+msgid "Wi-Fi hardware is blocked"
+msgstr "Wi‑Fi-hårdvaran är blockerad"
+
+msgid "Wi-Fi is turned off"
+msgstr "Wi‑Fi är avstängt"
+
 msgid "Your computer does not seem to be connected to Wi-Fi or wired Ethernet right now."
 msgstr "Datorn verkar inte vara ansluten till Wi‑Fi eller kabelnätverk just nu."
+
+msgid "Your computer has Wi-Fi hardware, but wireless networking is currently switched off."
+msgstr "Datorn har Wi‑Fi-hårdvara, men trådlöst nätverk är avstängt just nu."
 
 msgid "Your computer is connected to the local network, but the default gateway is not replying."
 msgstr "Datorn är ansluten till det lokala nätverket, men standard-gatewayen svarar inte."

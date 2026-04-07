@@ -8,10 +8,14 @@ Signal Lantern is a GTK 4 + libadwaita prototype for Linux desktops that watches
 - Beginner-first issue cards with expandable technical details
 - Periodic background checks for:
   - no network connection
+  - captive portal or sign-in required networks
+  - Wi-Fi switched off in software
+  - Wi-Fi hardware blocked or adapter likely missing
   - weak Wi-Fi signal, when NetworkManager exposes signal data
   - default gateway unreachable
   - slow DNS
   - failing DNS
+  - restart required after updates or driver changes
   - high CPU load
   - low available memory
   - low disk space
@@ -119,6 +123,8 @@ The current UI now includes a first-pass a11y layer:
 - selectable technical detail rows for copy/paste without turning every detail row into a separate focus stop
 
 This is a pragmatic first pass, not a full accessibility audit.
+
+The UI also now announces material status changes with a lightweight toast instead of forcing noisy focus changes.
 
 ## Transifex sync CI
 

@@ -6,6 +6,8 @@ import shutil
 import socket
 import subprocess
 import time
+import urllib.error
+import urllib.request
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -19,6 +21,8 @@ DISK_LOW_PERCENT = 90.0
 DISK_CRITICAL_PERCENT = 95.0
 DNS_SLOW_MS = 750.0
 WIFI_WEAK_DBM = -72
+CAPTIVE_PORTAL_PROBE_URL = "http://connectivitycheck.gstatic.com/generate_204"
+CAPTIVE_PORTAL_SUCCESS_HTTP = 204
 
 
 @dataclass
@@ -46,12 +50,14 @@ class HealthEngine:
         memory = self._memory_state()
         disk = self._disk_state()
         dns = self._dns_state()
+        reboot = self._reboot_state()
         return {
             "network": network,
             "cpu": cpu,
             "memory": memory,
             "disk": disk,
             "dns": dns,
+            "reboot": reboot,
         }
 
     def _build_issues(self, raw: dict[str, Any]) -> list[Issue]:
@@ -61,6 +67,7 @@ class HealthEngine:
         cpu = raw["cpu"]
         memory = raw["memory"]
         disk = raw["disk"]
+        reboot = raw["reboot"]
 
         if not network["connected"]:
             issues.append(
@@ -82,6 +89,97 @@ class HealthEngine:
                     source="network",
                     action="network-settings",
                     notification_body="Open network settings and reconnect to get back online.",
+                )
+            )
+
+        if network.get("captive_portal"):
+            issues.append(
+                Issue(
+                    key="captive_portal",
+                    severity=Severity.WARNING,
+                    title="Sign-in required on this network",
+                    meaning="This network likely wants you to open a browser and sign in before the internet works normally.",
+                    suggestions=[
+                        "Open a web browser and wait a moment for a sign-in page.",
+                        "If nothing appears, try visiting a simple website that starts with http://.",
+                        "After signing in, run the checks again.",
+                    ],
+                    details={
+                        "connectivity": network.get("connectivity") or "unknown",
+                        "interface": network.get("active_interface") or "unknown",
+                        "probe_url": CAPTIVE_PORTAL_PROBE_URL,
+                    },
+                    source="network",
+                    action="network-settings",
+                    notification_body="Open a browser and complete the network sign-in page.",
+                )
+            )
+
+        if network.get("wifi_radio") == "disabled":
+            issues.append(
+                Issue(
+                    key="wifi_disabled",
+                    severity=Severity.WARNING,
+                    title="Wi-Fi is turned off",
+                    meaning="Your computer has Wi-Fi hardware, but wireless networking is currently switched off.",
+                    suggestions=[
+                        "Turn Wi-Fi on from the system menu or network settings.",
+                        "If airplane mode is enabled, turn it off.",
+                        "Run the checks again after reconnecting.",
+                    ],
+                    details={
+                        "wifi_hardware": network.get("wifi_hardware") or "unknown",
+                        "wifi_radio": network.get("wifi_radio") or "unknown",
+                        "nmcli_state": network.get("nmcli_state") or "unknown",
+                    },
+                    source="network",
+                    action="network-settings",
+                    notification_body="Turn Wi-Fi back on to reconnect wirelessly.",
+                )
+            )
+
+        if network.get("wifi_hardware") == "disabled":
+            issues.append(
+                Issue(
+                    key="wifi_hardware_blocked",
+                    severity=Severity.WARNING,
+                    title="Wi-Fi hardware is blocked",
+                    meaning="Linux can see the Wi-Fi adapter, but the hardware itself looks switched off or blocked.",
+                    suggestions=[
+                        "Check for a laptop Wi-Fi switch or airplane-mode key.",
+                        "Turn off airplane mode in the system menu.",
+                        "Restart once if the hardware switch state looks wrong.",
+                    ],
+                    details={
+                        "wifi_hardware": network.get("wifi_hardware") or "unknown",
+                        "wifi_radio": network.get("wifi_radio") or "unknown",
+                    },
+                    source="network",
+                    action="network-settings",
+                    notification_body="Turn the Wi-Fi hardware back on to use wireless networking.",
+                )
+            )
+
+        if network.get("wifi_hardware") == "missing":
+            issues.append(
+                Issue(
+                    key="wifi_adapter_missing",
+                    severity=Severity.WARNING,
+                    title="Wi-Fi adapter may be missing",
+                    meaning="Linux does not currently see a working Wi-Fi adapter, so wireless networking may need a driver or a reconnected adapter.",
+                    suggestions=[
+                        "If you use a USB Wi-Fi adapter, unplug it and plug it in again.",
+                        "Open Additional Drivers and check whether Linux offers a Wi-Fi driver.",
+                        "If this is a laptop, restart once and see if Wi-Fi returns.",
+                    ],
+                    details={
+                        "wifi_hardware": network.get("wifi_hardware") or "unknown",
+                        "wifi_devices": ", ".join(network.get("wifi_devices") or []) or "none",
+                        "ethernet_devices": ", ".join(network.get("ethernet_devices") or []) or "none",
+                    },
+                    source="network",
+                    action="network-settings",
+                    notification_body="Linux cannot find a working Wi-Fi adapter right now.",
                 )
             )
 
@@ -250,6 +348,26 @@ class HealthEngine:
                 )
             )
 
+        if reboot["required"]:
+            issues.append(
+                Issue(
+                    key="reboot_required",
+                    severity=Severity.WARNING,
+                    title="A restart is required",
+                    meaning="Linux has pending updates or driver changes that will not fully apply until you restart the computer.",
+                    suggestions=[
+                        "Save your work and restart the computer when convenient.",
+                        "After restarting, run the checks again.",
+                        "If a device still does not work, check updates or Additional Drivers.",
+                    ],
+                    details={
+                        "reason": reboot.get("reason") or "system updates or driver changes",
+                    },
+                    source="system",
+                    notification_body="Restart the computer to finish applying updates or driver changes.",
+                )
+            )
+
         severity_order = {Severity.CRITICAL: 0, Severity.WARNING: 1, Severity.HEALTHY: 2}
         return sorted(issues, key=lambda issue: severity_order[issue.severity])
 
@@ -268,9 +386,15 @@ class HealthEngine:
         memory = raw["memory"]
         disk = raw["disk"]
 
-        network_value = "Online" if network["connected"] else "Offline"
+        network_value = "Captive portal" if network.get("captive_portal") else ("Online" if network["connected"] else "Offline")
         wifi_value = "N/A"
-        if network.get("wifi_signal_dbm") is not None:
+        if network.get("wifi_hardware") == "missing":
+            wifi_value = "Adapter missing"
+        elif network.get("wifi_hardware") == "disabled":
+            wifi_value = "Hardware blocked"
+        elif network.get("wifi_radio") == "disabled":
+            wifi_value = "Off"
+        elif network.get("wifi_signal_dbm") is not None:
             label = "Weak" if network["wifi_signal_dbm"] <= WIFI_WEAK_DBM else "OK"
             wifi_value = f"{label} ({network.get('wifi_signal_percent', '?')}%)"
         gateway_value = "Reachable" if network.get("gateway_reachable") else ("Unreachable" if network.get("gateway") else "Unknown")
@@ -296,12 +420,28 @@ class HealthEngine:
                 active_interface = match.group(2)
 
         nmcli_state = self._command(["nmcli", "-t", "-f", "STATE", "general"], timeout=4)
+        connectivity = self._command(["nmcli", "-t", "-f", "CONNECTIVITY", "general"], timeout=4)
+        wifi_caps = self._command(["nmcli", "-t", "-f", "WIFI-HW,WIFI", "general"], timeout=4)
         connected = bool(gateway or (nmcli_state and "connected" in nmcli_state))
 
         wifi_device = None
         wifi_ssid = None
         wifi_signal_percent = None
         wifi_signal_dbm = None
+        wifi_devices: list[str] = []
+        ethernet_devices: list[str] = []
+
+        device_status = self._command(["nmcli", "-t", "-f", "DEVICE,TYPE,STATE", "device", "status"], timeout=4)
+        if device_status:
+            for line in device_status.splitlines():
+                parts = line.split(":")
+                if len(parts) < 3:
+                    continue
+                if parts[1] == "wifi":
+                    wifi_devices.append(parts[0])
+                elif parts[1] == "ethernet":
+                    ethernet_devices.append(parts[0])
+
         wifi_list = self._command(["nmcli", "-t", "-f", "IN-USE,SSID,SIGNAL,DEVICE", "dev", "wifi"], timeout=4)
         if wifi_list:
             for line in wifi_list.splitlines():
@@ -316,6 +456,17 @@ class HealthEngine:
             wifi_signal_dbm = int((wifi_signal_percent / 2) - 100)
             connected = True
 
+        wifi_hardware = "unknown"
+        wifi_radio = "unknown"
+        if wifi_caps:
+            values = wifi_caps.split(":", 1)
+            if values:
+                wifi_hardware = values[0].strip().lower() or "unknown"
+            if len(values) > 1:
+                wifi_radio = values[1].strip().lower() or "unknown"
+        if wifi_hardware == "enabled" and not wifi_devices and not wifi_device:
+            wifi_hardware = "missing"
+
         gateway_reachable = None
         gateway_ping_ms = None
         if gateway and shutil.which("ping"):
@@ -326,6 +477,19 @@ class HealthEngine:
                 if latency_match:
                     gateway_ping_ms = float(latency_match.group(1))
 
+        captive_portal = False
+        if connectivity and connectivity.strip().lower() == "portal":
+            captive_portal = True
+        elif connected and connectivity and connectivity.strip().lower() in {"limited", "unknown"}:
+            try:
+                request = urllib.request.Request(CAPTIVE_PORTAL_PROBE_URL, headers={"User-Agent": "Signal Lantern/0.1"})
+                with urllib.request.urlopen(request, timeout=4) as response:
+                    captive_portal = response.status != CAPTIVE_PORTAL_SUCCESS_HTTP
+            except urllib.error.HTTPError as error:
+                captive_portal = error.code != CAPTIVE_PORTAL_SUCCESS_HTTP
+            except Exception:
+                captive_portal = False
+
         return {
             "connected": connected,
             "gateway": gateway,
@@ -333,10 +497,31 @@ class HealthEngine:
             "gateway_ping_ms": gateway_ping_ms,
             "active_interface": active_interface,
             "nmcli_state": nmcli_state.strip() if nmcli_state else None,
+            "connectivity": connectivity.strip().lower() if connectivity else None,
+            "captive_portal": captive_portal,
             "wifi_device": wifi_device,
+            "wifi_devices": wifi_devices,
+            "ethernet_devices": ethernet_devices,
+            "wifi_hardware": wifi_hardware,
+            "wifi_radio": wifi_radio,
             "wifi_ssid": wifi_ssid,
             "wifi_signal_percent": wifi_signal_percent,
             "wifi_signal_dbm": wifi_signal_dbm,
+        }
+
+    def _reboot_state(self) -> dict[str, Any]:
+        marker = Path("/var/run/reboot-required")
+        reason_file = Path("/var/run/reboot-required.pkgs")
+        reason = ""
+        if reason_file.exists():
+            try:
+                lines = [line.strip() for line in reason_file.read_text(encoding="utf-8").splitlines() if line.strip()]
+                reason = ", ".join(lines[:5])
+            except OSError:
+                reason = ""
+        return {
+            "required": marker.exists(),
+            "reason": reason,
         }
 
     def _dns_state(self) -> dict[str, Any]:
