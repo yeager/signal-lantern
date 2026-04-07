@@ -1,0 +1,26 @@
+#!/usr/bin/make -f
+
+export PYBUILD_NAME=signal-lantern
+export SIGNAL_LANTERN_LOCALE_DIR=$(CURDIR)/locale
+
+%:
+	dh $@ --buildsystem=pybuild
+
+override_dh_auto_build:
+	dh_auto_build
+	./scripts/compile-translations.sh
+
+override_dh_auto_install:
+	dh_auto_install
+	mkdir -p debian/signal-lantern/usr/share/applications
+	mkdir -p debian/signal-lantern/usr/share/icons/hicolor/scalable/apps
+	mkdir -p debian/signal-lantern/usr/share/locale
+	cp data/io.github.signallantern.desktop debian/signal-lantern/usr/share/applications/
+	cp data/io.github.signallantern.svg debian/signal-lantern/usr/share/icons/hicolor/scalable/apps/
+	if [ -d locale ]; then \
+	  find locale -mindepth 2 -maxdepth 2 -type d -name LC_MESSAGES | while read -r msgdir; do \
+	    lang="$$(basename "$$(dirname "$$msgdir")")"; \
+	    mkdir -p debian/signal-lantern/usr/share/locale/$$lang/LC_MESSAGES; \
+	    cp -a $$msgdir/*.mo debian/signal-lantern/usr/share/locale/$$lang/LC_MESSAGES/; \
+	  done; \
+	fi

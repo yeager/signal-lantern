@@ -116,6 +116,22 @@ chmod +x scripts/update-translations.sh scripts/compile-translations.sh
 
 This refreshes `locale/signal-lantern.pot`, merges `po/*.po`, and writes compiled gettext catalogs under `locale/<lang>/LC_MESSAGES/`.
 
+## Native package builds
+
+Debian/Ubuntu:
+
+```bash
+chmod +x scripts/build-deb.sh
+./scripts/build-deb.sh
+```
+
+Fedora/RHEL-style RPM:
+
+```bash
+chmod +x scripts/build-rpm.sh
+./scripts/build-rpm.sh
+```
+
 ## Simple packaging helper
 
 ```bash
@@ -123,7 +139,32 @@ chmod +x scripts/package.sh
 ./scripts/package.sh
 ```
 
-This creates `dist/signal-lantern-appdir.tar.gz`, a lightweight appdir-style bundle containing the launcher, icon, and desktop file. It is not a polished Debian package yet, but it gives you a clean handoff artifact.
+This creates `dist/signal-lantern-appdir.tar.gz`, a lightweight appdir-style bundle containing the launcher, icon, and desktop file.
+
+## Build a .deb (Ubuntu / Debian)
+
+```bash
+./scripts/build-deb.sh
+```
+
+This installs build dependencies, compiles translations, and runs `dpkg-buildpackage`. The resulting `.deb` lands in the parent directory. Install it with:
+
+```bash
+sudo dpkg -i ../signal-lantern_0.1.0-1_all.deb
+sudo apt-get install -f   # resolve any missing deps
+```
+
+## Build an .rpm (Fedora)
+
+```bash
+./scripts/build-rpm.sh
+```
+
+This installs build dependencies, creates a source tarball from `git archive`, and runs `rpmbuild`. The resulting `.rpm` lands under `~/rpmbuild/RPMS/noarch/`. Install it with:
+
+```bash
+sudo dnf install ~/rpmbuild/RPMS/noarch/signal-lantern-0.1.0-1.*.noarch.rpm
+```
 
 ## Accessibility
 

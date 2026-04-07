@@ -1,0 +1,31 @@
+Source: signal-lantern
+Section: utils
+Priority: optional
+Maintainer: Daniel Nylander <daniel@danielnylander.se>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-python,
+ gettext,
+ pybuild-plugin-pyproject,
+ python3-all,
+ python3-setuptools
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: https://github.com/yeager/signal-lantern
+
+Package: signal-lantern
+Architecture: all
+Depends:
+ ${misc:Depends},
+ ${python3:Depends},
+ gir1.2-adw-1,
+ gir1.2-gtk-4.0,
+ iproute2,
+ iputils-ping,
+ network-manager,
+ python3-gi,
+ python3-gi-cairo
+Description: GTK 4 system health helper for common Linux desktop problems
+ Signal Lantern is a GTK 4 and libadwaita desktop helper that watches
+ common Linux network and system problems, explains them in plain language,
+ and suggests practical next steps for the user.

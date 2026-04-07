@@ -66,6 +66,13 @@
 - Added `scripts/compile-translations.sh` to build `.mo` catalogs from `po/*.po`.
 - Updated run/package scripts to compile and bundle locale files when gettext tools are available.
 
+## Native packaging (2026-04-07)
+
+- Added Debian packaging under `debian/` using debhelper + pybuild.
+- Added RPM packaging under `packaging/signal-lantern.spec`.
+- Added helper scripts for DEB and RPM builds.
+- Package installs the app entry point, desktop file, icon, and compiled locale files.
+
 ## Remaining gaps
 
 - No tray/background service integration yet.

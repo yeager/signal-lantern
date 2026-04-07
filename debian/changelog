@@ -1,0 +1,5 @@
+signal-lantern (0.1.0-1) unstable; urgency=medium
+
+  * Initial package release.
+
+ -- Daniel Nylander <daniel@danielnylander.se>  Tue, 07 Apr 2026 13:10:00 +0200
