@@ -17,6 +17,7 @@ Signal Lantern is a GTK 4 + libadwaita prototype for Linux desktops that watches
   - default gateway unreachable
   - slow DNS
   - failing DNS
+  - high latency and unstable jitter against public DNS targets
   - restart required after updates or driver changes
   - high CPU load
   - low available memory
@@ -139,6 +140,8 @@ The current UI now includes a first-pass a11y layer:
 This is a pragmatic first pass, not a full accessibility audit.
 
 The UI also now announces material status changes with a lightweight toast instead of forcing noisy focus changes.
+
+For network quality, the app now also keeps a short rolling latency sample against stable public targets such as `1.1.1.1` and `8.8.8.8`, so it can warn about both consistently high latency and unstable jitter.
 
 ## Transifex sync CI
 

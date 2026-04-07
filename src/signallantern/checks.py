@@ -8,7 +8,7 @@ import subprocess
 import time
 import urllib.error
 import urllib.request
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -20,6 +20,10 @@ MEMORY_LOW_PERCENT = 10.0
 DISK_LOW_PERCENT = 90.0
 DISK_CRITICAL_PERCENT = 95.0
 DNS_SLOW_MS = 750.0
+PUBLIC_DNS_LATENCY_SLOW_MS = 120.0
+PUBLIC_DNS_JITTER_WARN_MS = 35.0
+PUBLIC_DNS_TARGETS = ["1.1.1.1", "8.8.8.8"]
+LATENCY_SAMPLE_WINDOW = 6
 WIFI_WEAK_DBM = -72
 CAPTIVE_PORTAL_PROBE_URL = "http://connectivitycheck.gstatic.com/generate_204"
 CAPTIVE_PORTAL_SUCCESS_HTTP = 204
@@ -30,6 +34,7 @@ class HealthState:
     previous_cpu_total: int = 0
     previous_cpu_idle: int = 0
     cpu_usage_percent: float = 0.0
+    public_dns_latency_samples: list[float] = field(default_factory=list)
 
 
 class HealthEngine:
@@ -283,6 +288,54 @@ class HealthEngine:
                 )
             )
 
+        if dns.get("public_latency_ms") is not None and dns["public_latency_ms"] >= PUBLIC_DNS_LATENCY_SLOW_MS:
+            issues.append(
+                Issue(
+                    key="internet_latency_high",
+                    severity=Severity.WARNING,
+                    title="Internet connection looks slow",
+                    meaning="Latency to a stable public target is higher than normal, so browsing, calls, or gaming may feel sluggish.",
+                    suggestions=[
+                        "If you are on Wi-Fi, move closer to the router or try Ethernet.",
+                        "Pause downloads, cloud sync, or streaming on this network.",
+                        "Run the checks again in a minute to see if the slowdown is temporary.",
+                    ],
+                    details={
+                        "target": dns.get("public_target") or "unknown",
+                        "latency_ms": dns.get("public_latency_ms"),
+                        "jitter_ms": dns.get("public_jitter_ms"),
+                        "samples": dns.get("public_samples"),
+                    },
+                    source="dns",
+                    action="network-settings",
+                    notification_body="The internet connection looks slow right now.",
+                )
+            )
+
+        if dns.get("public_jitter_ms") is not None and dns["public_jitter_ms"] >= PUBLIC_DNS_JITTER_WARN_MS:
+            issues.append(
+                Issue(
+                    key="internet_jitter_high",
+                    severity=Severity.WARNING,
+                    title="Connection stability is uneven",
+                    meaning="Latency is jumping around more than usual, which can cause choppy calls, buffering, or lag spikes.",
+                    suggestions=[
+                        "If you are on Wi-Fi, reduce distance and interference if you can.",
+                        "Pause other network-heavy activity on this connection.",
+                        "If the problem keeps happening, restart the router or try another network.",
+                    ],
+                    details={
+                        "target": dns.get("public_target") or "unknown",
+                        "latency_ms": dns.get("public_latency_ms"),
+                        "jitter_ms": dns.get("public_jitter_ms"),
+                        "samples": dns.get("public_samples"),
+                    },
+                    source="dns",
+                    action="network-settings",
+                    notification_body="The connection is unstable and latency is bouncing around.",
+                )
+            )
+
         if cpu["usage_percent"] >= CPU_HIGH_WATERMARK:
             issues.append(
                 Issue(
@@ -471,6 +524,10 @@ class HealthEngine:
             wifi_value = f"{label} ({network.get('wifi_signal_percent', '?')}%)"
         gateway_value = "Reachable" if network.get("gateway_reachable") else ("Unreachable" if network.get("gateway") else "Unknown")
         dns_value = f"{int(dns['latency_ms'])} ms" if dns.get("latency_ms") is not None else ("Failing" if dns.get("success") is False else "Unknown")
+        if dns.get("public_latency_ms") is not None:
+            dns_value = f"{int(dns['public_latency_ms'])} ms"
+            if dns.get("public_jitter_ms") is not None and dns["public_jitter_ms"] >= PUBLIC_DNS_JITTER_WARN_MS:
+                dns_value += f" ±{int(dns['public_jitter_ms'])}"
         if storage.get("root_read_only"):
             disk_value = "Read-only"
         elif storage.get("boot_used_percent") is not None and storage["boot_used_percent"] >= 90:
@@ -615,12 +672,6 @@ class HealthEngine:
             socket.setdefaulttimeout(2.5)
             socket.getaddrinfo(host, 443, proto=socket.IPPROTO_TCP)
             latency_ms = (time.perf_counter() - started) * 1000
-            return {
-                "success": True,
-                "latency_ms": latency_ms,
-                "resolver": resolver,
-                "probe_host": host,
-            }
         except OSError as error:
             return {
                 "success": False,
@@ -628,7 +679,51 @@ class HealthEngine:
                 "resolver": resolver,
                 "probe_host": host,
                 "error": str(error),
+                "public_target": None,
+                "public_latency_ms": None,
+                "public_jitter_ms": None,
+                "public_samples": [],
             }
+
+        public_probe = self._public_dns_probe()
+        samples = list(self.state.public_dns_latency_samples)
+        if public_probe["latency_ms"] is not None:
+            samples.append(public_probe["latency_ms"])
+            samples = samples[-LATENCY_SAMPLE_WINDOW:]
+            self.state.public_dns_latency_samples = samples
+        jitter_ms = None
+        if len(samples) >= 3:
+            mean = sum(samples) / len(samples)
+            jitter_ms = sum(abs(sample - mean) for sample in samples) / len(samples)
+
+        return {
+            "success": True,
+            "latency_ms": latency_ms,
+            "resolver": resolver,
+            "probe_host": host,
+            "public_target": public_probe["target"],
+            "public_latency_ms": public_probe["latency_ms"],
+            "public_jitter_ms": jitter_ms,
+            "public_samples": samples,
+            "public_error": public_probe.get("error"),
+        }
+
+    def _public_dns_probe(self) -> dict[str, Any]:
+        if not shutil.which("ping"):
+            return {"target": None, "latency_ms": None, "error": "ping unavailable"}
+        for target in PUBLIC_DNS_TARGETS:
+            started = time.perf_counter()
+            output = self._command(["ping", "-c", "1", "-W", "2", target], timeout=4)
+            if not output:
+                continue
+            latency_match = re.search(r"time=([0-9.]+) ms", output)
+            if latency_match:
+                return {
+                    "target": target,
+                    "latency_ms": float(latency_match.group(1)),
+                    "elapsed_ms": (time.perf_counter() - started) * 1000,
+                }
+        return {"target": PUBLIC_DNS_TARGETS[0], "latency_ms": None, "error": "public DNS ping failed"}
 
     def _cpu_state(self) -> dict[str, Any]:
         usage_percent = self._cpu_usage_percent()

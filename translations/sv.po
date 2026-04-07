@@ -1,467 +1,620 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: signal-lantern 0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-07 12:01+0200\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "2 issues need attention."
-msgstr "2 problem behöver uppmärksamhet."
-
-msgid "A restart is required"
-msgstr "En omstart krävs"
-
-msgid "About"
-msgstr "Om"
-
-msgid "Active issues"
-msgstr "Aktiva problem"
-
-msgid "Adapter missing"
-msgstr "Adapter saknas"
-
-msgid "After restarting, run the checks again."
-msgstr "Kör kontrollerna igen efter omstart."
-
-msgid "After signing in, run the checks again."
-msgstr "Kör kontrollerna igen efter att du loggat in."
-
-msgid "Available memory is running low. Apps may freeze or swap heavily."
-msgstr "Tillgängligt minne börjar ta slut. Appar kan frysa eller swappa mycket."
-
-msgid "Beginner-friendly issue explanations with advanced details when you want them."
-msgstr "Nybörjarvänliga förklaringar med tekniska detaljer när du vill ha dem."
-
-msgid "CPU"
-msgstr "CPU"
-
-msgid "Captive portal"
-msgstr "Inloggningsportal"
-
-msgid "Check again now"
-msgstr "Kontrollera igen nu"
-
-msgid "Check for a laptop Wi-Fi switch or airplane-mode key."
-msgstr "Leta efter en Wi‑Fi-knapp eller flygplanslägesknapp på datorn."
-
-msgid "Check that Wi-Fi is turned on."
-msgstr "Kontrollera att Wi‑Fi är aktiverat."
-
-msgid "Check which process is using the CPU in System Monitor."
-msgstr "Kontrollera vilken process som använder CPU i Systemövervakning."
-
-msgid "Close a few heavy apps or inspect System Monitor."
-msgstr "Stäng några tunga appar eller öppna Systemövervakning."
-
-msgid "Close a few large apps to keep the system responsive."
-msgstr "Stäng några stora appar för att hålla systemet responsivt."
-
-msgid "Close apps you do not need."
-msgstr "Stäng appar du inte behöver."
-
-msgid "Close large apps or browser tabs you do not need."
-msgstr "Stäng stora appar eller webbläsarflikar du inte behöver."
-
-msgid "Copy diagnostics"
-msgstr "Kopiera diagnostik"
-
-msgid "Copy full diagnostic report to clipboard"
-msgstr "Kopiera fullständig diagnostikrapport till urklipp"
-
-msgid "Critical"
-msgstr "Kritiskt"
-
-msgid "Critical issue detected"
-msgstr "Kritiskt problem upptäckt"
-
-msgid "Ctrl+R checks again, Ctrl+Shift+C copies diagnostics"
-msgstr "Ctrl+R kör kontroller igen, Ctrl+Skift+C kopierar diagnostik"
-
-msgid "Current status"
-msgstr "Nuvarande status"
-
-msgid "Current system health and the most important active problems."
-msgstr "Nuvarande systemhälsa och de viktigaste aktiva problemen."
-
-msgid "DNS"
-msgstr "DNS"
-
-msgid "DNS is failing"
-msgstr "DNS fungerar inte"
-
-msgid "DNS lookups are slow"
-msgstr "DNS-uppslag är långsamma"
-
-msgid "Delete large files you no longer need."
-msgstr "Ta bort stora filer du inte längre behöver."
-
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:86
 msgid "Diagnostics copied to the clipboard."
 msgstr "Diagnostik kopierad till urklipp."
 
-msgid "Disk"
-msgstr "Disk"
-
-msgid "Disk space is running low"
-msgstr "Diskutrymmet börjar ta slut"
-
-msgid "Empty the trash."
-msgstr "Töm papperskorgen."
-
-msgid "Everything looks fine"
-msgstr "Allt ser bra ut"
-
-msgid "Explains common network and system problems in plain language"
-msgstr "Förklarar vanliga nätverks- och systemproblem på begriplig svenska"
-
-msgid "Failing"
-msgstr "Fallerar"
-
-msgid "Free some space so updates and downloads do not fail."
-msgstr "Frigör utrymme så att uppdateringar och hämtningar inte misslyckas."
-
-msgid "Gateway"
-msgstr "Gateway"
-
-msgid "Hardware blocked"
-msgstr "Hårdvarublockerad"
-
-msgid "Healthy"
-msgstr "Friskt"
-
-msgid "High processor load"
-msgstr "Hög processorbelastning"
-
-msgid "If a device still does not work, check updates or Additional Drivers."
-msgstr "Om en enhet fortfarande inte fungerar, kontrollera uppdateringar eller Ytterligare drivrutiner."
-
-msgid "If airplane mode is enabled, turn it off."
-msgstr "Om flygplansläge är aktiverat, stäng av det."
-
-msgid "If nothing appears, try visiting a simple website that starts with http://."
-msgstr "Om inget visas, prova att besöka en enkel webbplats som börjar med http://."
-
-msgid "If this is a laptop, restart once and see if Wi-Fi returns."
-msgstr "Om det här är en bärbar dator, starta om en gång och se om Wi‑Fi kommer tillbaka."
-
-msgid "If you use a USB Wi-Fi adapter, unplug it and plug it in again."
-msgstr "Om du använder en USB-baserad Wi‑Fi-adapter, koppla ur och anslut den igen."
-
-msgid "Issue details"
-msgstr "Problemdetaljer"
-
-msgid "Keyboard shortcuts"
-msgstr "Tangentbordsgenvägar"
-
-msgid "Last checked"
-msgstr "Senast kontrollerad"
-
-msgid "Linux can see the Wi-Fi adapter, but the hardware itself looks switched off or blocked."
-msgstr "Linux kan se Wi‑Fi-adaptern, men själva hårdvaran verkar vara avstängd eller blockerad."
-
-msgid "Linux does not currently see a working Wi-Fi adapter, so wireless networking may need a driver or a reconnected adapter."
-msgstr "Linux ser inte någon fungerande Wi‑Fi-adapter just nu, så trådlöst nätverk kan behöva en drivrutin eller att adaptern ansluts igen."
-
-msgid "Linux has pending updates or driver changes that will not fully apply until you restart the computer."
-msgstr "Linux har väntande uppdateringar eller drivrutinsändringar som inte börjar gälla fullt ut förrän du startar om datorn."
-
-msgid "Memory"
-msgstr "Minne"
-
-msgid "Move closer to the router or access point."
-msgstr "Flytta dig närmare routern eller accesspunkten."
-
-msgid "Move closer to the router or switch to a stronger connection."
-msgstr "Flytta dig närmare routern eller byt till en starkare anslutning."
-
-msgid "Move files to external or cloud storage."
-msgstr "Flytta filer till extern lagring eller molnlagring."
-
-msgid "N/A"
-msgstr "Ej tillämpligt"
-
-msgid "Name lookups are slow, so websites may feel sluggish."
-msgstr "Namnuppslag är långsamma, så webbplatser kan kännas sega."
-
-msgid "Needs attention"
-msgstr "Behöver uppmärksamhet"
-
-msgid "Network"
-msgstr "Nätverk"
-
-msgid "No active issues"
-msgstr "Inga aktiva problem"
-
-msgid "No network connection"
-msgstr "Ingen nätverksanslutning"
-
-msgid "No suitable desktop helper was found for this action."
-msgstr "Ingen passande skrivbordshjälpare hittades för den här åtgärden."
-
-msgid "OK"
-msgstr "OK"
-
-msgid "Off"
-msgstr "Av"
-
-msgid "Offline"
-msgstr "Offline"
-
-msgid "Online"
-msgstr "Online"
-
-msgid "Open Additional Drivers and check whether Linux offers a Wi-Fi driver."
-msgstr "Öppna Ytterligare drivrutiner och se om Linux erbjuder en Wi‑Fi-drivrutin."
-
-msgid "Open Disk Usage Analyzer"
-msgstr "Öppna diskanalys"
-
-msgid "Open Network Settings"
-msgstr "Öppna nätverksinställningar"
-
-msgid "Open System Monitor"
-msgstr "Öppna systemövervakning"
-
-msgid "Open a web browser and wait a moment for a sign-in page."
-msgstr "Öppna en webbläsare och vänta en stund på en inloggningssida."
-
-msgid "Open network settings and reconnect to get back online."
-msgstr "Öppna nätverksinställningarna och anslut igen för att komma online."
-
-msgid "Overview"
-msgstr "Översikt"
-
-msgid "Plug in the network cable if you use wired internet."
-msgstr "Anslut nätverkskabeln om du använder kabelanslutning."
-
-msgid "Problem cards with plain-language explanations and suggested fixes."
-msgstr "Problemkort med enkla förklaringar och föreslagna lösningar."
-
-msgid "Quick health strip for advanced users."
-msgstr "Snabb hälsoremsa för avancerade användare."
-
-msgid "Re-run checks"
-msgstr "Kör kontroller igen"
-
-msgid "Reachable"
-msgstr "Nåbar"
-
-msgid "Reboot if memory pressure stays high."
-msgstr "Starta om datorn om minnespressen består."
-
-msgid "Reconnect or troubleshoot the local network hardware."
-msgstr "Anslut igen eller felsök den lokala nätverksutrustningen."
-
-msgid "Reconnect to your network connection."
-msgstr "Anslut till nätverket igen."
-
-msgid "Reconnect to your wireless network."
-msgstr "Anslut till ditt trådlösa nätverk igen."
-
-msgid "Reduce obstacles between your device and the router."
-msgstr "Minska hinder mellan enheten och routern."
-
-msgid "Restart heavy apps that may be leaking memory."
-msgstr "Starta om tunga appar som kan läcka minne."
-
-msgid "Restart once if the hardware switch state looks wrong."
-msgstr "Starta om en gång om hårdvarublockeringen verkar fel."
-
-msgid "Restart the network connection or router."
-msgstr "Starta om nätverksanslutningen eller routern."
-
-msgid "Restart the router if you can."
-msgstr "Starta om routern om du kan."
-
-msgid "Restart the system if the load does not drop."
-msgstr "Starta om systemet om belastningen inte går ned."
-
-msgid "Router is not responding"
-msgstr "Routern svarar inte"
-
-msgid "Run all health checks immediately"
-msgstr "Kör alla hälsokontroller direkt"
-
-msgid "Run the checks again after reconnecting."
-msgstr "Kör kontrollerna igen efter återanslutning."
-
-msgid "Save your work and restart the computer when convenient."
-msgstr "Spara ditt arbete och starta om datorn när det passar."
-
-msgid "Seen"
-msgstr "Sedd"
-
-msgid "Show technical details"
-msgstr "Visa tekniska detaljer"
-
-msgid "Show technical details (press Enter or Space)"
-msgstr "Visa tekniska detaljer (tryck Enter eller blanksteg)"
-
-msgid "Sign-in required on this network"
-msgstr "Inloggning krävs på det här nätverket"
-
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:131
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:222
 msgid "Signal Lantern"
 msgstr "Signal Lantern"
 
-msgid "Signal Lantern will let you know if it spots a network or system problem."
-msgstr "Signal Lantern säger till om den hittar ett nätverks- eller systemproblem."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:138
+msgid "Check again now"
+msgstr "Kontrollera igen nu"
 
-msgid "Switch DNS server in network settings if you know a better one."
-msgstr "Byt DNS-server i nätverksinställningarna om du vet en bättre."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:139
+msgid "Run all health checks immediately"
+msgstr "Kör alla hälsokontroller direkt"
 
-msgid "System details"
-msgstr "Systemdetaljer"
-
-msgid "System health helper"
-msgstr "Systemhjälp för hälsa och nätverk"
-
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:164
 msgid "System health summary"
 msgstr "Systemhälsans sammanfattning"
 
-msgid "System is low on memory"
-msgstr "Systemet har lite minne kvar"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:164
+msgid "Current system health and the most important active problems."
+msgstr "Nuvarande systemhälsa och de viktigaste aktiva problemen."
 
-msgid "Technical details"
-msgstr "Tekniska detaljer"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:187
+msgid "Overview"
+msgstr "Översikt"
 
-msgid "The DNS server does not appear to be answering reliably."
-msgstr "DNS-servern verkar inte svara pålitligt."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:188
+msgid ""
+"Beginner-friendly issue explanations with advanced details when you want "
+"them."
+msgstr "Nybörjarvänliga förklaringar med tekniska detaljer när du vill ha dem."
 
-msgid "The DNS server is answering, but lookups are slower than normal."
-msgstr "DNS-servern svarar, men uppslagen är långsammare än normalt."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:195
+msgid "Active issues"
+msgstr "Aktiva problem"
 
-msgid "This network likely wants you to open a browser and sign in before the internet works normally."
-msgstr "Det här nätverket vill troligen att du öppnar en webbläsare och loggar in innan internet fungerar normalt."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:195
+msgid "Problem cards with plain-language explanations and suggested fixes."
+msgstr "Problemkort med enkla förklaringar och föreslagna lösningar."
 
-msgid "Try another device on the same network to compare."
-msgstr "Prova en annan enhet på samma nätverk för att jämföra."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:204
+msgid "System details"
+msgstr "Systemdetaljer"
 
-msgid "Try another network if websites still do not load."
-msgstr "Prova ett annat nätverk om webbplatser fortfarande inte laddar."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:205
+msgid "Quick health strip for advanced users."
+msgstr "Snabb hälsoremsa för avancerade användare."
 
-msgid "Turn Wi-Fi on from the system menu or network settings."
-msgstr "Slå på Wi‑Fi från systemmenyn eller nätverksinställningarna."
-
-msgid "Turn off airplane mode in the system menu."
-msgstr "Stäng av flygplansläge i systemmenyn."
-
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:213
 msgid "Unknown"
 msgstr "Okänt"
 
-msgid "Unreachable"
-msgstr "Onåbar"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:218
+msgid "About"
+msgstr "Om"
 
-msgid "Use Ethernet for a more stable connection if possible."
-msgstr "Använd Ethernet för stabilare anslutning om det går."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:223
+msgid "Explains common network and system problems in plain language"
+msgstr "Förklarar vanliga nätverks- och systemproblem på begriplig svenska"
 
-msgid "Wait a minute and try again in case the problem is temporary."
-msgstr "Vänta en minut och försök igen om problemet är tillfälligt."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:228
+msgid "Keyboard shortcuts"
+msgstr "Tangentbordsgenvägar"
 
-msgid "Warning"
-msgstr "Varning"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:229
+msgid "Ctrl+R checks again, Ctrl+Shift+C copies diagnostics"
+msgstr "Ctrl+R kör kontroller igen, Ctrl+Skift+C kopierar diagnostik"
 
-msgid "Weak"
-msgstr "Svag"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:238
+msgid "Everything looks fine"
+msgstr "Allt ser bra ut"
 
-msgid "Weak Wi-Fi signal"
-msgstr "Svag Wi‑Fi-signal"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:240
+msgid ""
+"Signal Lantern will let you know if it spots a network or system problem."
+msgstr ""
+"Signal Lantern säger till om den hittar ett nätverks- eller systemproblem."
 
-msgid "Websites may fail to load until name resolution works again."
-msgstr "Webbplatser kan sluta ladda tills namnuppslag fungerar igen."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:243
+msgid "Critical issue detected"
+msgstr "Kritiskt problem upptäckt"
 
-msgid "What this means"
-msgstr "Det här betyder"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:243
+msgid "Needs attention"
+msgstr "Behöver uppmärksamhet"
 
-msgid "What you can try"
-msgstr "Det här kan du prova"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:246
+msgid "Last checked"
+msgstr "Senast kontrollerad"
 
-msgid "Wi-Fi"
-msgstr "Wi‑Fi"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:251
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:263
+msgid "No active issues"
+msgstr "Inga aktiva problem"
 
-msgid "Wi-Fi adapter may be missing"
-msgstr "Wi‑Fi-adaptern kan saknas"
-
-msgid "Wi-Fi hardware is blocked"
-msgstr "Wi‑Fi-hårdvaran är blockerad"
-
-msgid "Wi-Fi is turned off"
-msgstr "Wi‑Fi är avstängt"
-
-msgid "Your computer does not seem to be connected to Wi-Fi or wired Ethernet right now."
-msgstr "Datorn verkar inte vara ansluten till Wi‑Fi eller kabelnätverk just nu."
-
-msgid "Your computer has Wi-Fi hardware, but wireless networking is currently switched off."
-msgstr "Datorn har Wi‑Fi-hårdvara, men trådlöst nätverk är avstängt just nu."
-
-msgid "Your computer is connected to the local network, but the default gateway is not replying."
-msgstr "Datorn är ansluten till det lokala nätverket, men standard-gatewayen svarar inte."
-
-msgid "Your main disk is almost full. Downloads, updates, and apps may start failing."
-msgstr "Huvuddisken är nästan full. Hämtningar, uppdateringar och appar kan börja fallera."
-
-msgid "Your system has been under heavy CPU load for a while. Apps may feel slow or unresponsive."
-msgstr "Systemet har haft hög CPU-belastning en stund. Appar kan kännas långsamma eller sega."
-
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:264
 msgid "Your system looks healthy."
 msgstr "Ditt system verkar må bra."
 
-msgid "Your wireless connection is active, but the signal is weak and may cause slow speeds or dropouts."
-msgstr "Den trådlösa anslutningen är aktiv, men signalen är svag och kan ge låg hastighet eller avbrott."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:290
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:323
+msgid "What you can try"
+msgstr "Det här kan du prova"
 
-msgid "issue"
-msgstr "problem"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:343
+msgid "Copy diagnostics"
+msgstr "Kopiera diagnostik"
 
-msgid "issues"
-msgstr "problem"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:344
+msgid "Copy full diagnostic report to clipboard"
+msgstr "Kopiera fullständig diagnostikrapport till urklipp"
 
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:349
+msgid "Show technical details"
+msgstr "Visa tekniska detaljer"
 
-msgid "Power"
-msgstr "Ström"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:350
+msgid "Show technical details (press Enter or Space)"
+msgstr "Visa tekniska detaljer (tryck Enter eller blanksteg)"
 
-msgid "Battery is running low"
-msgstr "Batteriet börjar ta slut"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:363
+msgid "Seen"
+msgstr "Sedd"
 
-msgid "Your computer is on battery power and may shut down soon if you do not plug it in."
-msgstr "Datorn kör på batteri och kan snart stängas av om du inte ansluter laddaren."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:399
+msgid "No suitable desktop helper was found for this action."
+msgstr "Ingen passande skrivbordshjälpare hittades för den här åtgärden."
 
-msgid "Plug in the charger as soon as you can."
-msgstr "Anslut laddaren så snart du kan."
+#~ msgid "2 issues need attention."
+#~ msgstr "2 problem behöver uppmärksamhet."
 
-msgid "Save your work in case the battery runs out."
-msgstr "Spara ditt arbete om batteriet tar slut."
+#~ msgid "A restart is required"
+#~ msgstr "En omstart krävs"
 
-msgid "Lower screen brightness or close heavy apps to stretch the battery a bit longer."
-msgstr "Sänk skärmens ljusstyrka eller stäng tunga appar för att få batteriet att räcka lite längre."
+#~ msgid "Adapter missing"
+#~ msgstr "Adapter saknas"
 
-msgid "System disk is read-only"
-msgstr "Systemdisken är skrivskyddad"
+#~ msgid "After restarting, run the checks again."
+#~ msgstr "Kör kontrollerna igen efter omstart."
 
-msgid "Linux mounted the main filesystem as read-only, so saving files, updates, or app changes may fail."
-msgstr "Linux har monterat huvudfilsystemet som skrivskyddat, så sparande, uppdateringar eller appändringar kan misslyckas."
+#~ msgid "After signing in, run the checks again."
+#~ msgstr "Kör kontrollerna igen efter att du loggat in."
 
-msgid "Save any work you still can to another location."
-msgstr "Spara det arbete du kan till en annan plats."
+#~ msgid "Available memory is running low. Apps may freeze or swap heavily."
+#~ msgstr ""
+#~ "Tillgängligt minne börjar ta slut. Appar kan frysa eller swappa mycket."
 
-msgid "Restart the computer and check whether the disk becomes writable again."
-msgstr "Starta om datorn och kontrollera om disken blir skrivbar igen."
+#~ msgid "CPU"
+#~ msgstr "CPU"
 
-msgid "If the problem returns, check the disk for errors or ask for technical help."
-msgstr "Om problemet kommer tillbaka, kontrollera disken efter fel eller be om teknisk hjälp."
+#~ msgid "Captive portal"
+#~ msgstr "Inloggningsportal"
 
-msgid "Boot partition is almost full"
-msgstr "Bootpartitionen är nästan full"
+#~ msgid "Check for a laptop Wi-Fi switch or airplane-mode key."
+#~ msgstr "Leta efter en Wi‑Fi-knapp eller flygplanslägesknapp på datorn."
 
-msgid "The small boot partition is nearly full, so kernel or system updates may fail."
-msgstr "Den lilla bootpartitionen är nästan full, så kärn- eller systemuppdateringar kan misslyckas."
+#~ msgid "Check that Wi-Fi is turned on."
+#~ msgstr "Kontrollera att Wi‑Fi är aktiverat."
 
-msgid "Install any pending updates fully, then restart the computer."
-msgstr "Installera alla väntande uppdateringar helt och starta sedan om datorn."
+#~ msgid "Check which process is using the CPU in System Monitor."
+#~ msgstr "Kontrollera vilken process som använder CPU i Systemövervakning."
 
-msgid "Remove old kernels or packages only if you know how, or ask for help."
-msgstr "Ta bara bort gamla kärnor eller paket om du vet hur, annars be om hjälp."
+#~ msgid "Close a few heavy apps or inspect System Monitor."
+#~ msgstr "Stäng några tunga appar eller öppna Systemövervakning."
 
-msgid "If updates keep failing, check disk usage in /boot specifically."
-msgstr "Om uppdateringar fortsätter att misslyckas, kontrollera särskilt diskutrymmet i /boot."
+#~ msgid "Close a few large apps to keep the system responsive."
+#~ msgstr "Stäng några stora appar för att hålla systemet responsivt."
 
-msgid "Read-only"
-msgstr "Skrivskyddad"
+#~ msgid "Close apps you do not need."
+#~ msgstr "Stäng appar du inte behöver."
+
+#~ msgid "Close large apps or browser tabs you do not need."
+#~ msgstr "Stäng stora appar eller webbläsarflikar du inte behöver."
+
+#~ msgid "Critical"
+#~ msgstr "Kritiskt"
+
+#~ msgid "Current status"
+#~ msgstr "Nuvarande status"
+
+#~ msgid "DNS"
+#~ msgstr "DNS"
+
+#~ msgid "DNS is failing"
+#~ msgstr "DNS fungerar inte"
+
+#~ msgid "DNS lookups are slow"
+#~ msgstr "DNS-uppslag är långsamma"
+
+#~ msgid "Delete large files you no longer need."
+#~ msgstr "Ta bort stora filer du inte längre behöver."
+
+#~ msgid "Disk"
+#~ msgstr "Disk"
+
+#~ msgid "Disk space is running low"
+#~ msgstr "Diskutrymmet börjar ta slut"
+
+#~ msgid "Empty the trash."
+#~ msgstr "Töm papperskorgen."
+
+#~ msgid "Failing"
+#~ msgstr "Fallerar"
+
+#~ msgid "Free some space so updates and downloads do not fail."
+#~ msgstr "Frigör utrymme så att uppdateringar och hämtningar inte misslyckas."
+
+#~ msgid "Gateway"
+#~ msgstr "Gateway"
+
+#~ msgid "Hardware blocked"
+#~ msgstr "Hårdvarublockerad"
+
+#~ msgid "Healthy"
+#~ msgstr "Friskt"
+
+#~ msgid "High processor load"
+#~ msgstr "Hög processorbelastning"
+
+#~ msgid ""
+#~ "If a device still does not work, check updates or Additional Drivers."
+#~ msgstr ""
+#~ "Om en enhet fortfarande inte fungerar, kontrollera uppdateringar eller "
+#~ "Ytterligare drivrutiner."
+
+#~ msgid "If airplane mode is enabled, turn it off."
+#~ msgstr "Om flygplansläge är aktiverat, stäng av det."
+
+#~ msgid ""
+#~ "If nothing appears, try visiting a simple website that starts with "
+#~ "http://."
+#~ msgstr ""
+#~ "Om inget visas, prova att besöka en enkel webbplats som börjar med "
+#~ "http://."
+
+#~ msgid "If this is a laptop, restart once and see if Wi-Fi returns."
+#~ msgstr ""
+#~ "Om det här är en bärbar dator, starta om en gång och se om Wi‑Fi kommer "
+#~ "tillbaka."
+
+#~ msgid "If you use a USB Wi-Fi adapter, unplug it and plug it in again."
+#~ msgstr ""
+#~ "Om du använder en USB-baserad Wi‑Fi-adapter, koppla ur och anslut den "
+#~ "igen."
+
+#~ msgid "Issue details"
+#~ msgstr "Problemdetaljer"
+
+#~ msgid ""
+#~ "Linux can see the Wi-Fi adapter, but the hardware itself looks switched "
+#~ "off or blocked."
+#~ msgstr ""
+#~ "Linux kan se Wi‑Fi-adaptern, men själva hårdvaran verkar vara avstängd "
+#~ "eller blockerad."
+
+#~ msgid ""
+#~ "Linux does not currently see a working Wi-Fi adapter, so wireless "
+#~ "networking may need a driver or a reconnected adapter."
+#~ msgstr ""
+#~ "Linux ser inte någon fungerande Wi‑Fi-adapter just nu, så trådlöst "
+#~ "nätverk kan behöva en drivrutin eller att adaptern ansluts igen."
+
+#~ msgid ""
+#~ "Linux has pending updates or driver changes that will not fully apply "
+#~ "until you restart the computer."
+#~ msgstr ""
+#~ "Linux har väntande uppdateringar eller drivrutinsändringar som inte "
+#~ "börjar gälla fullt ut förrän du startar om datorn."
+
+#~ msgid "Memory"
+#~ msgstr "Minne"
+
+#~ msgid "Move closer to the router or access point."
+#~ msgstr "Flytta dig närmare routern eller accesspunkten."
+
+#~ msgid "Move closer to the router or switch to a stronger connection."
+#~ msgstr "Flytta dig närmare routern eller byt till en starkare anslutning."
+
+#~ msgid "Move files to external or cloud storage."
+#~ msgstr "Flytta filer till extern lagring eller molnlagring."
+
+#~ msgid "N/A"
+#~ msgstr "Ej tillämpligt"
+
+#~ msgid "Name lookups are slow, so websites may feel sluggish."
+#~ msgstr "Namnuppslag är långsamma, så webbplatser kan kännas sega."
+
+#~ msgid "Network"
+#~ msgstr "Nätverk"
+
+#~ msgid "No network connection"
+#~ msgstr "Ingen nätverksanslutning"
+
+#~ msgid "OK"
+#~ msgstr "OK"
+
+#~ msgid "Off"
+#~ msgstr "Av"
+
+#~ msgid "Offline"
+#~ msgstr "Offline"
+
+#~ msgid "Online"
+#~ msgstr "Online"
+
+#~ msgid ""
+#~ "Open Additional Drivers and check whether Linux offers a Wi-Fi driver."
+#~ msgstr ""
+#~ "Öppna Ytterligare drivrutiner och se om Linux erbjuder en Wi‑Fi-drivrutin."
+
+#~ msgid "Open Disk Usage Analyzer"
+#~ msgstr "Öppna diskanalys"
+
+#~ msgid "Open Network Settings"
+#~ msgstr "Öppna nätverksinställningar"
+
+#~ msgid "Open System Monitor"
+#~ msgstr "Öppna systemövervakning"
+
+#~ msgid "Open a web browser and wait a moment for a sign-in page."
+#~ msgstr "Öppna en webbläsare och vänta en stund på en inloggningssida."
+
+#~ msgid "Open network settings and reconnect to get back online."
+#~ msgstr "Öppna nätverksinställningarna och anslut igen för att komma online."
+
+#~ msgid "Plug in the network cable if you use wired internet."
+#~ msgstr "Anslut nätverkskabeln om du använder kabelanslutning."
+
+#~ msgid "Re-run checks"
+#~ msgstr "Kör kontroller igen"
+
+#~ msgid "Reachable"
+#~ msgstr "Nåbar"
+
+#~ msgid "Reboot if memory pressure stays high."
+#~ msgstr "Starta om datorn om minnespressen består."
+
+#~ msgid "Reconnect or troubleshoot the local network hardware."
+#~ msgstr "Anslut igen eller felsök den lokala nätverksutrustningen."
+
+#~ msgid "Reconnect to your network connection."
+#~ msgstr "Anslut till nätverket igen."
+
+#~ msgid "Reconnect to your wireless network."
+#~ msgstr "Anslut till ditt trådlösa nätverk igen."
+
+#~ msgid "Reduce obstacles between your device and the router."
+#~ msgstr "Minska hinder mellan enheten och routern."
+
+#~ msgid "Restart heavy apps that may be leaking memory."
+#~ msgstr "Starta om tunga appar som kan läcka minne."
+
+#~ msgid "Restart once if the hardware switch state looks wrong."
+#~ msgstr "Starta om en gång om hårdvarublockeringen verkar fel."
+
+#~ msgid "Restart the network connection or router."
+#~ msgstr "Starta om nätverksanslutningen eller routern."
+
+#~ msgid "Restart the router if you can."
+#~ msgstr "Starta om routern om du kan."
+
+#~ msgid "Restart the system if the load does not drop."
+#~ msgstr "Starta om systemet om belastningen inte går ned."
+
+#~ msgid "Router is not responding"
+#~ msgstr "Routern svarar inte"
+
+#~ msgid "Run the checks again after reconnecting."
+#~ msgstr "Kör kontrollerna igen efter återanslutning."
+
+#~ msgid "Save your work and restart the computer when convenient."
+#~ msgstr "Spara ditt arbete och starta om datorn när det passar."
+
+#~ msgid "Sign-in required on this network"
+#~ msgstr "Inloggning krävs på det här nätverket"
+
+#~ msgid "Switch DNS server in network settings if you know a better one."
+#~ msgstr "Byt DNS-server i nätverksinställningarna om du vet en bättre."
+
+#~ msgid "System health helper"
+#~ msgstr "Systemhjälp för hälsa och nätverk"
+
+#~ msgid "System is low on memory"
+#~ msgstr "Systemet har lite minne kvar"
+
+#~ msgid "Technical details"
+#~ msgstr "Tekniska detaljer"
+
+#~ msgid "The DNS server does not appear to be answering reliably."
+#~ msgstr "DNS-servern verkar inte svara pålitligt."
+
+#~ msgid "The DNS server is answering, but lookups are slower than normal."
+#~ msgstr "DNS-servern svarar, men uppslagen är långsammare än normalt."
+
+#~ msgid ""
+#~ "This network likely wants you to open a browser and sign in before the "
+#~ "internet works normally."
+#~ msgstr ""
+#~ "Det här nätverket vill troligen att du öppnar en webbläsare och loggar in "
+#~ "innan internet fungerar normalt."
+
+#~ msgid "Try another device on the same network to compare."
+#~ msgstr "Prova en annan enhet på samma nätverk för att jämföra."
+
+#~ msgid "Try another network if websites still do not load."
+#~ msgstr "Prova ett annat nätverk om webbplatser fortfarande inte laddar."
+
+#~ msgid "Turn Wi-Fi on from the system menu or network settings."
+#~ msgstr "Slå på Wi‑Fi från systemmenyn eller nätverksinställningarna."
+
+#~ msgid "Turn off airplane mode in the system menu."
+#~ msgstr "Stäng av flygplansläge i systemmenyn."
+
+#~ msgid "Unreachable"
+#~ msgstr "Onåbar"
+
+#~ msgid "Use Ethernet for a more stable connection if possible."
+#~ msgstr "Använd Ethernet för stabilare anslutning om det går."
+
+#~ msgid "Wait a minute and try again in case the problem is temporary."
+#~ msgstr "Vänta en minut och försök igen om problemet är tillfälligt."
+
+#~ msgid "Warning"
+#~ msgstr "Varning"
+
+#~ msgid "Weak"
+#~ msgstr "Svag"
+
+#~ msgid "Weak Wi-Fi signal"
+#~ msgstr "Svag Wi‑Fi-signal"
+
+#~ msgid "Websites may fail to load until name resolution works again."
+#~ msgstr "Webbplatser kan sluta ladda tills namnuppslag fungerar igen."
+
+#~ msgid "What this means"
+#~ msgstr "Det här betyder"
+
+#~ msgid "Wi-Fi"
+#~ msgstr "Wi‑Fi"
+
+#~ msgid "Wi-Fi adapter may be missing"
+#~ msgstr "Wi‑Fi-adaptern kan saknas"
+
+#~ msgid "Wi-Fi hardware is blocked"
+#~ msgstr "Wi‑Fi-hårdvaran är blockerad"
+
+#~ msgid "Wi-Fi is turned off"
+#~ msgstr "Wi‑Fi är avstängt"
+
+#~ msgid ""
+#~ "Your computer does not seem to be connected to Wi-Fi or wired Ethernet "
+#~ "right now."
+#~ msgstr ""
+#~ "Datorn verkar inte vara ansluten till Wi‑Fi eller kabelnätverk just nu."
+
+#~ msgid ""
+#~ "Your computer has Wi-Fi hardware, but wireless networking is currently "
+#~ "switched off."
+#~ msgstr ""
+#~ "Datorn har Wi‑Fi-hårdvara, men trådlöst nätverk är avstängt just nu."
+
+#~ msgid ""
+#~ "Your computer is connected to the local network, but the default gateway "
+#~ "is not replying."
+#~ msgstr ""
+#~ "Datorn är ansluten till det lokala nätverket, men standard-gatewayen "
+#~ "svarar inte."
+
+#~ msgid ""
+#~ "Your main disk is almost full. Downloads, updates, and apps may start "
+#~ "failing."
+#~ msgstr ""
+#~ "Huvuddisken är nästan full. Hämtningar, uppdateringar och appar kan börja "
+#~ "fallera."
+
+#~ msgid ""
+#~ "Your system has been under heavy CPU load for a while. Apps may feel slow "
+#~ "or unresponsive."
+#~ msgstr ""
+#~ "Systemet har haft hög CPU-belastning en stund. Appar kan kännas långsamma "
+#~ "eller sega."
+
+#~ msgid ""
+#~ "Your wireless connection is active, but the signal is weak and may cause "
+#~ "slow speeds or dropouts."
+#~ msgstr ""
+#~ "Den trådlösa anslutningen är aktiv, men signalen är svag och kan ge låg "
+#~ "hastighet eller avbrott."
+
+#~ msgid "issue"
+#~ msgstr "problem"
+
+#~ msgid "issues"
+#~ msgstr "problem"
+
+#~ msgid "Power"
+#~ msgstr "Ström"
+
+#~ msgid "Battery is running low"
+#~ msgstr "Batteriet börjar ta slut"
+
+#~ msgid ""
+#~ "Your computer is on battery power and may shut down soon if you do not "
+#~ "plug it in."
+#~ msgstr ""
+#~ "Datorn kör på batteri och kan snart stängas av om du inte ansluter "
+#~ "laddaren."
+
+#~ msgid "Plug in the charger as soon as you can."
+#~ msgstr "Anslut laddaren så snart du kan."
+
+#~ msgid "Save your work in case the battery runs out."
+#~ msgstr "Spara ditt arbete om batteriet tar slut."
+
+#~ msgid ""
+#~ "Lower screen brightness or close heavy apps to stretch the battery a bit "
+#~ "longer."
+#~ msgstr ""
+#~ "Sänk skärmens ljusstyrka eller stäng tunga appar för att få batteriet att "
+#~ "räcka lite längre."
+
+#~ msgid "System disk is read-only"
+#~ msgstr "Systemdisken är skrivskyddad"
+
+#~ msgid ""
+#~ "Linux mounted the main filesystem as read-only, so saving files, updates, "
+#~ "or app changes may fail."
+#~ msgstr ""
+#~ "Linux har monterat huvudfilsystemet som skrivskyddat, så sparande, "
+#~ "uppdateringar eller appändringar kan misslyckas."
+
+#~ msgid "Save any work you still can to another location."
+#~ msgstr "Spara det arbete du kan till en annan plats."
+
+#~ msgid ""
+#~ "Restart the computer and check whether the disk becomes writable again."
+#~ msgstr "Starta om datorn och kontrollera om disken blir skrivbar igen."
+
+#~ msgid ""
+#~ "If the problem returns, check the disk for errors or ask for technical "
+#~ "help."
+#~ msgstr ""
+#~ "Om problemet kommer tillbaka, kontrollera disken efter fel eller be om "
+#~ "teknisk hjälp."
+
+#~ msgid "Boot partition is almost full"
+#~ msgstr "Bootpartitionen är nästan full"
+
+#~ msgid ""
+#~ "The small boot partition is nearly full, so kernel or system updates may "
+#~ "fail."
+#~ msgstr ""
+#~ "Den lilla bootpartitionen är nästan full, så kärn- eller "
+#~ "systemuppdateringar kan misslyckas."
+
+#~ msgid "Install any pending updates fully, then restart the computer."
+#~ msgstr ""
+#~ "Installera alla väntande uppdateringar helt och starta sedan om datorn."
+
+#~ msgid ""
+#~ "Remove old kernels or packages only if you know how, or ask for help."
+#~ msgstr ""
+#~ "Ta bara bort gamla kärnor eller paket om du vet hur, annars be om hjälp."
+
+#~ msgid "If updates keep failing, check disk usage in /boot specifically."
+#~ msgstr ""
+#~ "Om uppdateringar fortsätter att misslyckas, kontrollera särskilt "
+#~ "diskutrymmet i /boot."
+
+#~ msgid "Read-only"
+#~ msgstr "Skrivskyddad"
+
+msgid "Internet connection looks slow"
+msgstr "Internetanslutningen verkar långsam"
+
+msgid "Latency to a stable public target is higher than normal, so browsing, calls, or gaming may feel sluggish."
+msgstr "Latensen till ett stabilt publikt mål är högre än normalt, så surfning, samtal eller spel kan kännas sega."
+
+msgid "If you are on Wi-Fi, move closer to the router or try Ethernet."
+msgstr "Om du använder Wi‑Fi, flytta dig närmare routern eller prova Ethernet."
+
+msgid "Pause downloads, cloud sync, or streaming on this network."
+msgstr "Pausa hämtningar, molnsynk eller strömning på det här nätverket."
+
+msgid "Run the checks again in a minute to see if the slowdown is temporary."
+msgstr "Kör kontrollerna igen om en minut för att se om långsamheten är tillfällig."
+
+msgid "The internet connection looks slow right now."
+msgstr "Internetanslutningen verkar långsam just nu."
+
+msgid "Connection stability is uneven"
+msgstr "Anslutningen är ojämn"
+
+msgid "Latency is jumping around more than usual, which can cause choppy calls, buffering, or lag spikes."
+msgstr "Latensen hoppar mer än vanligt, vilket kan orsaka hackiga samtal, buffring eller laggspikar."
+
+msgid "If you are on Wi-Fi, reduce distance and interference if you can."
+msgstr "Om du använder Wi‑Fi, minska avstånd och störningar om du kan."
+
+msgid "Pause other network-heavy activity on this connection."
+msgstr "Pausa annan nätverkstung aktivitet på den här anslutningen."
+
+msgid "If the problem keeps happening, restart the router or try another network."
+msgstr "Om problemet fortsätter att hända, starta om routern eller prova ett annat nätverk."
+
+msgid "The connection is unstable and latency is bouncing around."
+msgstr "Anslutningen är instabil och latensen hoppar upp och ner."

@@ -56,6 +56,7 @@
 - Added low-battery detection for laptops running on battery power.
 - Added read-only root filesystem detection.
 - Added `/boot` almost-full detection so update failures are easier to explain.
+- Added rolling public-DNS latency sampling to detect both slow internet response and unstable jitter.
 - All new checks include plain-language guidance aimed at non-technical users.
 
 ## Gettext pipeline (2026-04-07)

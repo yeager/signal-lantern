@@ -1,467 +1,184 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: signal-lantern 0.1.0\n"
-"Language: en\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-07 12:01+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "2 issues need attention."
-msgstr ""
-
-msgid "A restart is required"
-msgstr ""
-
-msgid "About"
-msgstr ""
-
-msgid "Active issues"
-msgstr ""
-
-msgid "Adapter missing"
-msgstr ""
-
-msgid "After restarting, run the checks again."
-msgstr ""
-
-msgid "After signing in, run the checks again."
-msgstr ""
-
-msgid "Available memory is running low. Apps may freeze or swap heavily."
-msgstr ""
-
-msgid "Beginner-friendly issue explanations with advanced details when you want them."
-msgstr ""
-
-msgid "CPU"
-msgstr ""
-
-msgid "Captive portal"
-msgstr ""
-
-msgid "Check again now"
-msgstr ""
-
-msgid "Check for a laptop Wi-Fi switch or airplane-mode key."
-msgstr ""
-
-msgid "Check that Wi-Fi is turned on."
-msgstr ""
-
-msgid "Check which process is using the CPU in System Monitor."
-msgstr ""
-
-msgid "Close a few heavy apps or inspect System Monitor."
-msgstr ""
-
-msgid "Close a few large apps to keep the system responsive."
-msgstr ""
-
-msgid "Close apps you do not need."
-msgstr ""
-
-msgid "Close large apps or browser tabs you do not need."
-msgstr ""
-
-msgid "Copy diagnostics"
-msgstr ""
-
-msgid "Copy full diagnostic report to clipboard"
-msgstr ""
-
-msgid "Critical"
-msgstr ""
-
-msgid "Critical issue detected"
-msgstr ""
-
-msgid "Ctrl+R checks again, Ctrl+Shift+C copies diagnostics"
-msgstr ""
-
-msgid "Current status"
-msgstr ""
-
-msgid "Current system health and the most important active problems."
-msgstr ""
-
-msgid "DNS"
-msgstr ""
-
-msgid "DNS is failing"
-msgstr ""
-
-msgid "DNS lookups are slow"
-msgstr ""
-
-msgid "Delete large files you no longer need."
-msgstr ""
-
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:86
 msgid "Diagnostics copied to the clipboard."
 msgstr ""
 
-msgid "Disk"
-msgstr ""
-
-msgid "Disk space is running low"
-msgstr ""
-
-msgid "Empty the trash."
-msgstr ""
-
-msgid "Everything looks fine"
-msgstr ""
-
-msgid "Explains common network and system problems in plain language"
-msgstr ""
-
-msgid "Failing"
-msgstr ""
-
-msgid "Free some space so updates and downloads do not fail."
-msgstr ""
-
-msgid "Gateway"
-msgstr ""
-
-msgid "Hardware blocked"
-msgstr ""
-
-msgid "Healthy"
-msgstr ""
-
-msgid "High processor load"
-msgstr ""
-
-msgid "If a device still does not work, check updates or Additional Drivers."
-msgstr ""
-
-msgid "If airplane mode is enabled, turn it off."
-msgstr ""
-
-msgid "If nothing appears, try visiting a simple website that starts with http://."
-msgstr ""
-
-msgid "If this is a laptop, restart once and see if Wi-Fi returns."
-msgstr ""
-
-msgid "If you use a USB Wi-Fi adapter, unplug it and plug it in again."
-msgstr ""
-
-msgid "Issue details"
-msgstr ""
-
-msgid "Keyboard shortcuts"
-msgstr ""
-
-msgid "Last checked"
-msgstr ""
-
-msgid "Linux can see the Wi-Fi adapter, but the hardware itself looks switched off or blocked."
-msgstr ""
-
-msgid "Linux does not currently see a working Wi-Fi adapter, so wireless networking may need a driver or a reconnected adapter."
-msgstr ""
-
-msgid "Linux has pending updates or driver changes that will not fully apply until you restart the computer."
-msgstr ""
-
-msgid "Memory"
-msgstr ""
-
-msgid "Move closer to the router or access point."
-msgstr ""
-
-msgid "Move closer to the router or switch to a stronger connection."
-msgstr ""
-
-msgid "Move files to external or cloud storage."
-msgstr ""
-
-msgid "N/A"
-msgstr ""
-
-msgid "Name lookups are slow, so websites may feel sluggish."
-msgstr ""
-
-msgid "Needs attention"
-msgstr ""
-
-msgid "Network"
-msgstr ""
-
-msgid "No active issues"
-msgstr ""
-
-msgid "No network connection"
-msgstr ""
-
-msgid "No suitable desktop helper was found for this action."
-msgstr ""
-
-msgid "OK"
-msgstr ""
-
-msgid "Off"
-msgstr ""
-
-msgid "Offline"
-msgstr ""
-
-msgid "Online"
-msgstr ""
-
-msgid "Open Additional Drivers and check whether Linux offers a Wi-Fi driver."
-msgstr ""
-
-msgid "Open Disk Usage Analyzer"
-msgstr ""
-
-msgid "Open Network Settings"
-msgstr ""
-
-msgid "Open System Monitor"
-msgstr ""
-
-msgid "Open a web browser and wait a moment for a sign-in page."
-msgstr ""
-
-msgid "Open network settings and reconnect to get back online."
-msgstr ""
-
-msgid "Overview"
-msgstr ""
-
-msgid "Plug in the network cable if you use wired internet."
-msgstr ""
-
-msgid "Problem cards with plain-language explanations and suggested fixes."
-msgstr ""
-
-msgid "Quick health strip for advanced users."
-msgstr ""
-
-msgid "Re-run checks"
-msgstr ""
-
-msgid "Reachable"
-msgstr ""
-
-msgid "Reboot if memory pressure stays high."
-msgstr ""
-
-msgid "Reconnect or troubleshoot the local network hardware."
-msgstr ""
-
-msgid "Reconnect to your network connection."
-msgstr ""
-
-msgid "Reconnect to your wireless network."
-msgstr ""
-
-msgid "Reduce obstacles between your device and the router."
-msgstr ""
-
-msgid "Restart heavy apps that may be leaking memory."
-msgstr ""
-
-msgid "Restart once if the hardware switch state looks wrong."
-msgstr ""
-
-msgid "Restart the network connection or router."
-msgstr ""
-
-msgid "Restart the router if you can."
-msgstr ""
-
-msgid "Restart the system if the load does not drop."
-msgstr ""
-
-msgid "Router is not responding"
-msgstr ""
-
-msgid "Run all health checks immediately"
-msgstr ""
-
-msgid "Run the checks again after reconnecting."
-msgstr ""
-
-msgid "Save your work and restart the computer when convenient."
-msgstr ""
-
-msgid "Seen"
-msgstr ""
-
-msgid "Show technical details"
-msgstr ""
-
-msgid "Show technical details (press Enter or Space)"
-msgstr ""
-
-msgid "Sign-in required on this network"
-msgstr ""
-
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:131
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:222
 msgid "Signal Lantern"
 msgstr ""
 
-msgid "Signal Lantern will let you know if it spots a network or system problem."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:138
+msgid "Check again now"
 msgstr ""
 
-msgid "Switch DNS server in network settings if you know a better one."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:139
+msgid "Run all health checks immediately"
 msgstr ""
 
-msgid "System details"
-msgstr ""
-
-msgid "System health helper"
-msgstr ""
-
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:164
 msgid "System health summary"
 msgstr ""
 
-msgid "System is low on memory"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:164
+msgid "Current system health and the most important active problems."
 msgstr ""
 
-msgid "Technical details"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:187
+msgid "Overview"
 msgstr ""
 
-msgid "The DNS server does not appear to be answering reliably."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:188
+msgid ""
+"Beginner-friendly issue explanations with advanced details when you want "
+"them."
 msgstr ""
 
-msgid "The DNS server is answering, but lookups are slower than normal."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:195
+msgid "Active issues"
 msgstr ""
 
-msgid "This network likely wants you to open a browser and sign in before the internet works normally."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:195
+msgid "Problem cards with plain-language explanations and suggested fixes."
 msgstr ""
 
-msgid "Try another device on the same network to compare."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:204
+msgid "System details"
 msgstr ""
 
-msgid "Try another network if websites still do not load."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:205
+msgid "Quick health strip for advanced users."
 msgstr ""
 
-msgid "Turn Wi-Fi on from the system menu or network settings."
-msgstr ""
-
-msgid "Turn off airplane mode in the system menu."
-msgstr ""
-
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:213
 msgid "Unknown"
 msgstr ""
 
-msgid "Unreachable"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:218
+msgid "About"
 msgstr ""
 
-msgid "Use Ethernet for a more stable connection if possible."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:223
+msgid "Explains common network and system problems in plain language"
 msgstr ""
 
-msgid "Wait a minute and try again in case the problem is temporary."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:228
+msgid "Keyboard shortcuts"
 msgstr ""
 
-msgid "Warning"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:229
+msgid "Ctrl+R checks again, Ctrl+Shift+C copies diagnostics"
 msgstr ""
 
-msgid "Weak"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:238
+msgid "Everything looks fine"
 msgstr ""
 
-msgid "Weak Wi-Fi signal"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:240
+msgid ""
+"Signal Lantern will let you know if it spots a network or system problem."
 msgstr ""
 
-msgid "Websites may fail to load until name resolution works again."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:243
+msgid "Critical issue detected"
 msgstr ""
 
-msgid "What this means"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:243
+msgid "Needs attention"
 msgstr ""
 
-msgid "What you can try"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:246
+msgid "Last checked"
 msgstr ""
 
-msgid "Wi-Fi"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:251
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:263
+msgid "No active issues"
 msgstr ""
 
-msgid "Wi-Fi adapter may be missing"
-msgstr ""
-
-msgid "Wi-Fi hardware is blocked"
-msgstr ""
-
-msgid "Wi-Fi is turned off"
-msgstr ""
-
-msgid "Your computer does not seem to be connected to Wi-Fi or wired Ethernet right now."
-msgstr ""
-
-msgid "Your computer has Wi-Fi hardware, but wireless networking is currently switched off."
-msgstr ""
-
-msgid "Your computer is connected to the local network, but the default gateway is not replying."
-msgstr ""
-
-msgid "Your main disk is almost full. Downloads, updates, and apps may start failing."
-msgstr ""
-
-msgid "Your system has been under heavy CPU load for a while. Apps may feel slow or unresponsive."
-msgstr ""
-
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:264
 msgid "Your system looks healthy."
 msgstr ""
 
-msgid "Your wireless connection is active, but the signal is weak and may cause slow speeds or dropouts."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:290
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:323
+msgid "What you can try"
 msgstr ""
 
-msgid "issue"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:343
+msgid "Copy diagnostics"
 msgstr ""
 
-msgid "issues"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:344
+msgid "Copy full diagnostic report to clipboard"
 msgstr ""
 
-
-msgid "Power"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:349
+msgid "Show technical details"
 msgstr ""
 
-msgid "Battery is running low"
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:350
+msgid "Show technical details (press Enter or Space)"
 msgstr ""
 
-msgid "Your computer is on battery power and may shut down soon if you do not plug it in."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:363
+msgid "Seen"
 msgstr ""
 
-msgid "Plug in the charger as soon as you can."
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:399
+msgid "No suitable desktop helper was found for this action."
 msgstr ""
 
-msgid "Save your work in case the battery runs out."
+msgid "Internet connection looks slow"
 msgstr ""
 
-msgid "Lower screen brightness or close heavy apps to stretch the battery a bit longer."
+msgid "Latency to a stable public target is higher than normal, so browsing, calls, or gaming may feel sluggish."
 msgstr ""
 
-msgid "System disk is read-only"
+msgid "If you are on Wi-Fi, move closer to the router or try Ethernet."
 msgstr ""
 
-msgid "Linux mounted the main filesystem as read-only, so saving files, updates, or app changes may fail."
+msgid "Pause downloads, cloud sync, or streaming on this network."
 msgstr ""
 
-msgid "Save any work you still can to another location."
+msgid "Run the checks again in a minute to see if the slowdown is temporary."
 msgstr ""
 
-msgid "Restart the computer and check whether the disk becomes writable again."
+msgid "The internet connection looks slow right now."
 msgstr ""
 
-msgid "If the problem returns, check the disk for errors or ask for technical help."
+msgid "Connection stability is uneven"
 msgstr ""
 
-msgid "Boot partition is almost full"
+msgid "Latency is jumping around more than usual, which can cause choppy calls, buffering, or lag spikes."
 msgstr ""
 
-msgid "The small boot partition is nearly full, so kernel or system updates may fail."
+msgid "If you are on Wi-Fi, reduce distance and interference if you can."
 msgstr ""
 
-msgid "Install any pending updates fully, then restart the computer."
+msgid "Pause other network-heavy activity on this connection."
 msgstr ""
 
-msgid "Remove old kernels or packages only if you know how, or ask for help."
+msgid "If the problem keeps happening, restart the router or try another network."
 msgstr ""
 
-msgid "If updates keep failing, check disk usage in /boot specifically."
-msgstr ""
-
-msgid "Read-only"
+msgid "The connection is unstable and latency is bouncing around."
 msgstr ""
