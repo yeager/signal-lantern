@@ -2,188 +2,186 @@ msgid ""
 msgstr ""
 "Project-Id-Version: signal-lantern 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-07 19:45+0200\n"
+"POT-Creation-Date: 2026-04-07 17:35+0200\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:96
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:97
 msgid "Diagnostics copied to the clipboard."
 msgstr "Diagnostik kopierad till urklipp."
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:108
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:109
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:135
 msgid "Autostart enabled."
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:116
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:117
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:143
 msgid "Autostart disabled."
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:147
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:358
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:174
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:373
 #, fuzzy
 msgid "New issues"
 msgstr "problem"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:149
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:360
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:176
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:375
 #, fuzzy
 msgid "Resolved issues"
 msgstr "Inga aktiva problem"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:191
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:294
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:218
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:309
 msgid "Signal Lantern"
 msgstr "Signal Lantern"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:198
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:225
 msgid "Check again now"
 msgstr "Kontrollera igen nu"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:199
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:226
 msgid "Run all health checks immediately"
 msgstr "Kör alla hälsokontroller direkt"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:224
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:251
 msgid "System health summary"
 msgstr "Systemhälsans sammanfattning"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:224
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:251
 msgid "Current system health and the most important active problems."
 msgstr "Nuvarande systemhälsa och de viktigaste aktiva problemen."
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:248
-msgid "Changes since last check"
-msgstr ""
-
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:259
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:274
 msgid "Overview"
 msgstr "Översikt"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:260
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:275
 msgid ""
 "Beginner-friendly issue explanations with advanced details when you want "
 "them."
 msgstr "Nybörjarvänliga förklaringar med tekniska detaljer när du vill ha dem."
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:267
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:282
 msgid "Active issues"
 msgstr "Aktiva problem"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:267
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:282
 msgid "Problem cards with plain-language explanations and suggested fixes."
 msgstr "Problemkort med enkla förklaringar och föreslagna lösningar."
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:276
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:291
 msgid "System details"
 msgstr "Systemdetaljer"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:277
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:292
 msgid "Quick health strip for advanced users."
 msgstr "Snabb hälsoremsa för avancerade användare."
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:285
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:300
 msgid "Unknown"
 msgstr "Okänt"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:290
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:305
 msgid "About"
 msgstr "Om"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:295
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:310
 msgid "Explains common network and system problems in plain language"
 msgstr "Förklarar vanliga nätverks- och systemproblem på begriplig svenska"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:300
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:315
 msgid "Keyboard shortcuts"
 msgstr "Tangentbordsgenvägar"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:301
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:316
 msgid "Ctrl+R checks again, Ctrl+Shift+C copies diagnostics"
 msgstr "Ctrl+R kör kontroller igen, Ctrl+Skift+C kopierar diagnostik"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:305
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:320
 msgid "Start automatically after login"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:308
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:323
 msgid "Enable"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:310
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:325
 msgid "Disable"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:322
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:337
 msgid "Everything looks fine"
 msgstr "Allt ser bra ut"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:324
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:339
 msgid ""
 "Signal Lantern will let you know if it spots a network or system problem."
 msgstr ""
 "Signal Lantern säger till om den hittar ett nätverks- eller systemproblem."
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:327
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:342
 msgid "Critical issue detected"
 msgstr "Kritiskt problem upptäckt"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:327
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:342
 msgid "Needs attention"
 msgstr "Behöver uppmärksamhet"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:330
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:345
 msgid "Last checked"
 msgstr "Senast kontrollerad"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:335
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:347
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:350
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:362
 msgid "No active issues"
 msgstr "Inga aktiva problem"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:348
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:363
 msgid "Your system looks healthy."
 msgstr "Ditt system verkar må bra."
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:380
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:377
+msgid "No changes since the last check."
+msgstr ""
+
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:390
 msgid "Enabled"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:380
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:390
 msgid "Disabled"
 msgstr ""
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:392
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:430
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:402
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:435
 msgid "What you can try"
 msgstr "Det här kan du prova"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:421
-msgid "Severity"
-msgstr ""
-
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:450
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:455
 msgid "Copy diagnostics"
 msgstr "Kopiera diagnostik"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:451
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:456
 msgid "Copy full diagnostic report to clipboard"
 msgstr "Kopiera fullständig diagnostikrapport till urklipp"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:456
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:461
 msgid "Show technical details"
 msgstr "Visa tekniska detaljer"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:457
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:462
 msgid "Show technical details (press Enter or Space)"
 msgstr "Visa tekniska detaljer (tryck Enter eller blanksteg)"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:470
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:475
 msgid "Seen"
 msgstr "Sedd"
 
-#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:506
+#: /Users/bosse/.openclaw/workspace-main/projects/signal-lantern/src/signallantern/app.py:511
 msgid "No suitable desktop helper was found for this action."
 msgstr "Ingen passande skrivbordshjälpare hittades för den här åtgärden."
 
